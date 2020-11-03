@@ -1,0 +1,25 @@
+{
+    "Main": {
+        "CloudContentViewer": "Cloud Content Viewer",
+        "Home": "Home",
+        "Documents": "Documents",
+        "About": "About"
+    },
+    "Home": {
+        "ContentViewerPrototype": "Content Viewer Prototype",
+        "Paragraph": "This is a prototype for a PWA that allows for viewing cloud content and storing it for offline use. This prototype is primarily intended to be a learning/research project for learning about the capabilities and limitiations of PWAs especially regarding offline capabilities on a variety of devices"
+    },
+    "About": {
+        "AdditionalDetails": "Additional Details",
+        "Paragraph1": "This prototype was created for Tech Matters as part of the 1000 landscapes project, you can learn more",
+        "Paragraph2": "You can find the source code for this prototype",
+        "Here": "here"
+    },
+    "Documents":{
+        "Documents": "Documents"
+    },
+    "Dropdown":{
+        "Title": "Change Language"
+    }
+
+}
