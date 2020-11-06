@@ -1,12 +1,14 @@
 import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
 import Main from './Main';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import "./i18n.js"
 import {I18nextProvider} from 'react-i18next';
 import i18next from "i18next"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 i18next.init({
   interpolation: {escapeValue: false},

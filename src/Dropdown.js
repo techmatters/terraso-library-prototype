@@ -11,16 +11,19 @@ const Dropdown = () => {
   return (
     <div>
       <h1>{t('Dropdown.Title', 'Hello there.')}</h1>
-      <button type="button" onClick={() => changeLanguage('sp')}>
+      <button class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={() => changeLanguage('sp')}>
         {t('translation:sp')}
       </button>
  
-      <button type="button" onClick={() => changeLanguage('en')}>
+      <button class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={() => changeLanguage('en')}>
         {t('translation:en')}
       </button>
+      
  
       
     </div>
+
+
   );
 };
  
