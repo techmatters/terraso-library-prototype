@@ -1,20 +1,34 @@
-import React,{Component} from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { scryRenderedComponentsWithType } from 'react-dom/test-utils';
+import { Document, Page, pdfjs } from 'react-pdf';
+ 
+function Reader() {
+ const [count, setDoc] = useState("NULL");
+ const [show, setShow] = useState(false)
+ const myFiles= ["dummy1", "dummy2"]
+  return (
+    <div>
+    
 
-function Document() {
-    // Declare a new state variable, which we'll call "count"
-    const [count, setCount] = useState(0);
-  
-    return (
-      <div>
-        <p>You clicked {count} times</p>
-        <button onClick={() => setCount(count + 1)}>
-          Click me
-        </button>
-      </div>
-    );
-  }
-  
-
-
-export default Document
+    
+    
+    
+    
+    {show && <iframe src={count} width="100%" height="500px"/> }
+    
+    <button onClick={() => {
+      setDoc("./dummy.pdf");  
+      setShow(true)
+      }}>
+      Document1
+    </button>
+    <button onClick={() => {
+      setDoc("./dummy2.pdf");  
+      setShow(true)
+      }}>
+      Document2
+    </button>
+    </div>
+  );
+}
+export default Reader;

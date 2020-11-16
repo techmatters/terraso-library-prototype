@@ -10,7 +10,7 @@ import About from "./About";
 //import Card from "./Dropdown"
 import {useTranslation} from 'react-i18next';
 //import {Dropdown} from 'react-bootstrap';
- 
+
 function Main()
 {   
   const {t} = useTranslation();
@@ -31,6 +31,7 @@ function Main()
       </div>
       </div>
     </HashRouter>
+    
   );
 }
   export default Main;

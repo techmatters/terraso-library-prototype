@@ -21,7 +21,7 @@ i18n
   .init({
     debug: true,
     resources,
-    lng: 'sp',
+    lng: 'en',
     fallbackLng: 'en',
     whitelist: ['en', 'sp'],
  
