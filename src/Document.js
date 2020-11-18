@@ -6,45 +6,29 @@ import Buttons from "./Buttons.json";
 export class Example2 extends React.Component {
   constructor(props){
     super(props)
-    this.state = {display: "./"}
+    this.state = {
+      display: "./",
+      showIframe: ""
+    };
   }
   render() {
-      return (
-        <div>
-          <iframe src={this.state.display} width="100%" height="500px"/>  
-          {Buttons.Buttons.map((item, i) => (
-            <p1>
-             <button onClick={() => {
-               this.setState({display: item.link})
-              }}>
-              {item.name}
-              </button>
-            </p1>
-          ))}
+    return (
+      <div>
         
-        </div>
-      
+        <iframe src={this.state.display} width="100%" height="500px"/>  
+        {Buttons.Buttons.map((item, i) => (
+          <p1>
+          <button onClick={() => {
+            this.setState({display: item.link})
+            }}>
+            {item.name}
+          </button>
+          </p1>
+        ))}
+      </div>
       );
   }
 }
 
 export default Example2;
-    /*
-    <div>
-    {show && <iframe src={count} width="100%" height="500px"/> }
-    
-    <button onClick={() => {
-      setDoc("./dummy.pdf");  
-      setShow(true)
-      }}>
-      Document1
-    </button>
-    <button onClick={() => {
-      setDoc("./dummy2.pdf");  
-      setShow(true)
-      }}>
-      Document2
-    </button>
-    </div>
-    */
  
