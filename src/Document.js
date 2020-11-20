@@ -8,13 +8,13 @@ export class Example2 extends React.Component {
     super(props)
     this.state = {
       display: "./",
-      showIframe: ""
+      showIframe: "",
+      showButtons: false
     };
   }
   render() {
     return (
       <div>
-        
         <iframe src={this.state.display} width="100%" height="500px"/>  
         {Buttons.Buttons.map((item, i) => (
           <p1>

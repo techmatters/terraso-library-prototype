@@ -9,7 +9,7 @@ const Dropdown = () => {
   };
  
   return (
-    <div>
+    /*<div>
       <h1>{t('Dropdown.Title', 'Hello there.')}</h1>
       <button class="btn btn-primary btn-lg active" role="button" aria-pressed="true" onClick={() => changeLanguage('sp')}>
         {t('translation:sp')}
@@ -21,7 +21,22 @@ const Dropdown = () => {
       
  
       
-    </div>
+    </div>*/
+
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select Language
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" onClick={() => changeLanguage('sp')}>
+        Espanol
+    </a>
+    <a class="dropdown-item" onClick={() => changeLanguage('en')}>
+        English
+    </a>
+  </div>
+</div>
 
 
   );

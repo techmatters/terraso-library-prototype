@@ -5,9 +5,10 @@ function Home(){
   const {t} = useTranslation();
     return (
       <div>
+        <Dropdown />
         <h2>{t('Home.ContentViewerPrototype')}</h2>
           <p>{t('Home.Paragraph')}</p>
-          <Dropdown />
+          
       </div>
     );
   

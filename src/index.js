@@ -2,13 +2,21 @@ import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
 
 import Main from './Main';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 import reportWebVitals from './reportWebVitals';
 import "./i18n.js"
 
 import i18next from "i18next"
-import 'bootstrap/dist/css/bootstrap.min.css'; //USED FOR VISUAL COMPONENTS: COULD BE CHANGED TO MAKE SMALLER
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import $ from 'jquery';
+import Popper from 'popper.js';
+ //USED FOR VISUAL COMPONENTS: COULD BE CHANGED TO MAKE SMALLER
 import './index.css';
+
+
 
 
 i18next.init({
