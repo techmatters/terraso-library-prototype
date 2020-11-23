@@ -8,23 +8,38 @@ export class Example2 extends React.Component {
     super(props)
     this.state = {
       display: "./",
-      showIframe: "",
-      showButtons: false
+      showIframe: false,
+      showButtons: true,
+      showBack: false
     };
   }
   render() {
     return (
       <div>
-        <iframe src={this.state.display} width="100%" height="500px"/>  
-        {Buttons.Buttons.map((item, i) => (
-          <p1>
-          <button onClick={() => {
+        {this.state.showIframe && <iframe src={this.state.display} width="100%" height="500px"/>}  
+        
+        {this.state.showButtons && (Buttons.Buttons.map((item, i) => (
+          <div>
+          <button class="btn-secondary btn-lg" onClick={() => {
             this.setState({display: item.link})
+            this.setState({showBack:true})
+            this.setState({showIframe:true})
+            this.setState({showButtons:false})
             }}>
             {item.name}
           </button>
-          </p1>
+          </div>
+          )
+          
         ))}
+            {this.state.showBack &&
+            (<button class="btn-secondary btn-lg" onClick={() => {
+            this.setState({showIframe: false})
+            this.setState({showBack:false})
+            this.setState({showButtons:true})
+            }}>
+            Back
+          </button>)}
       </div>
       );
   }
