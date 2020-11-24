@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { scryRenderedComponentsWithType } from 'react-dom/test-utils';
-import { Document, Page, pdfjs } from 'react-pdf';
+import React from 'react';
 import Buttons from "./Buttons.json";
- 
+import i18n from 'i18next';
 export class Example2 extends React.Component {
   constructor(props){
     super(props)
+    
     this.state = {
       display: "./",
       showIframe: false,
       showButtons: true,
       showBack: false
+      
     };
   }
   render() {
     return (
       <div>
-        {this.state.showIframe && <iframe src={this.state.display} width="100%" height="500px"/>}  
+        {this.state.showIframe && <iframe title="header" src={this.state.display} width="100%" height="500px"/>}  
         
         {this.state.showButtons && (Buttons.Buttons.map((item, i) => (
           <div>
@@ -38,7 +38,7 @@ export class Example2 extends React.Component {
             this.setState({showBack:false})
             this.setState({showButtons:true})
             }}>
-            Back
+            {i18n.t("Documents.back")}
           </button>)}
       </div>
       );

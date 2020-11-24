@@ -8,6 +8,7 @@
     "Home": {
         "ContentViewerPrototype": "Content Viewer Prototype",
         "Paragraph": "This is a prototype for a PWA that allows for viewing cloud content and storing it for offline use. This prototype is primarily intended to be a learning/research project for learning about the capabilities and limitiations of PWAs especially regarding offline capabilities on a variety of devices"
+        
     },
     "About": {
         "AdditionalDetails": "Additional Details",
@@ -16,7 +17,8 @@
         "Here": "here"
     },
     "Documents":{
-        "Documents": "Documents"
+        "Documents": "Documents",
+        "Back": "Espalda"
     },
     "Dropdown":{
         "Title": "Change Language"
