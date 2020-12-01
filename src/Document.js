@@ -38,7 +38,7 @@ export class Example2 extends React.Component {
             this.setState({showBack:false})
             this.setState({showButtons:true})
             }}>
-            {i18n.t("Documents.back")}
+            {i18n.t("Documents.Back")}
           </button>)}
       </div>
       );
