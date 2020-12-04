@@ -1,7 +1,7 @@
 import React from 'react';
 import Buttons from "./Buttons.json";
 import i18n from 'i18next';
-export class Example2 extends React.Component {
+export class Document extends React.Component {
   constructor(props){
     super(props)
     
@@ -13,6 +13,18 @@ export class Example2 extends React.Component {
       
     };
   }
+  
+  CachePDF(url) {
+    
+    caches.open('PDFS').then(cache => {
+    var testValue = cache.match("./dummy.pdf")
+    console.log(testValue)
+
+  })
+    
+  
+}
+  
   render() {
     return (
       <div>
@@ -27,6 +39,10 @@ export class Example2 extends React.Component {
             this.setState({showButtons:false})
             }}>
             {item.name}
+
+          </button>
+          <button class="btn-primary btn-lg" onClick={this.CachePDF}>
+            Cache
           </button>
           </div>
           )
@@ -40,10 +56,11 @@ export class Example2 extends React.Component {
             }}>
             {i18n.t("Documents.Back")}
           </button>)}
+
       </div>
       );
   }
 }
 
-export default Example2;
+export default Document;
  

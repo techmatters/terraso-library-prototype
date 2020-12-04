@@ -1,39 +1,51 @@
 import React from "react";
+
 //import Document from "./Document"
 
 //import Button from 'react-bootstrap/Button';
-import Reader from './Document.js';
+import Document from './Document.js';
 
 
 function Documents()
 {
-  
   return (
       <div>
-       <Reader title="Document 1" link="dummy.pdf"></Reader>
-      <CacheButton/>
+      <App> </App>
       </div>
-      
     );
 }
 
-function CacheButton() {
-
-  function sayHello() {
-    caches.open('PDFS').then(cache => {
-      const urls = ["./dummy.pdf"]
-      cache.addAll(urls)
-  })
-  }
-  
-  return (
-    <button onClick={sayHello}>
-      Click me!
-    </button>
-  );
+function useStickyState(defaultValue, key) {
+  const [value, setValue] = React.useState(() => {
+    const stickyValue = window.localStorage.getItem(key);
+    return stickyValue !== null
+      ? JSON.parse(stickyValue)
+      : defaultValue;
+  });
+  React.useEffect(() => {
+    window.localStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+  return [value, setValue];
 }
 
+function App() {
+  const [
+    count,
+    setCount
+  ] = useStickyState(0, "count");
 
+  return (
+    <div className="App">
+      <h1>Counter</h1>
+      <p>Current count: {count}</p>
+      <button
+        onClick={() => setCount(count + 1)}
+      >
+        Increment
+      </button>
+    </div>
+  );
+}
 
  
 export default Documents;
