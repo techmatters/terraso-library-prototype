@@ -37,16 +37,16 @@ function DocumentInfo(props){
   return(<div>
   <h1>{props.docName}</h1>
   <h1>{props.docLink}</h1>
-  <button
+  <button class="btn-secondary btn-lg"
     onClick={function()
     {
       if (cached === 0){
         setCached(1)
-        setButtonText("Uncache")
+        //setButtonText("Uncache")
       }
       else{
         setCached(0)
-        setButtonText("Cache")
+        //setButtonText("Cache")
       }
     }
     }>
