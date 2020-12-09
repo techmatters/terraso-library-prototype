@@ -3,13 +3,21 @@ import React, {useState} from "react";
 //import Button from 'react-bootstrap/Button';
 import Document from './Document.js';
 
+function CachePDF(url) {
+    alert(url)
+  
+}
+function UnCachePDF(url){
+  alert("removing"+ url)
+}
 
 function Documents()
 {
   return (
       <div>
-      <DocumentInfo docName="Document 1" docLink="./document1.pdf"> </DocumentInfo>
-      <Document></Document>
+      <DocumentInfo docName="Document 1" docLink="./dummy.pdf"> </DocumentInfo>
+      <DocumentInfo docName="Document 2" docLink="./dummy2.pdf"> </DocumentInfo>
+      
       </div>
     );
 }
@@ -33,67 +41,34 @@ function DocumentInfo(props){
     setCached
   ] = useStickyState(0,props.docName)
   const [buttonText, setButtonText] = useState("Cache")
+  var imgSource = "./heartgrey.png"
+  if (cached === 1){
+    imgSource = "./heart.png"
+  }
   
   return(<div>
-  <h1>{props.docName}</h1>
-  <h1>{props.docLink}</h1>
-  <button class="btn-secondary btn-lg"
-    onClick={function()
-    {
-      if (cached === 0){
-        setCached(1)
-        //setButtonText("Uncache")
-      }
-      else{
-        setCached(0)
-        //setButtonText("Cache")
-      }
-    }
-    }>
-    {cached}
+ 
+  <button class="btn-secondary btn-lg">
+    {props.docName}
   </button>
-  
-  
+  <img src={imgSource}
+    onClick={function()
+      {
+        if (cached === 0){
+          setCached(1)
+          CachePDF(props.docLink)
+        }
+        else{
+          setCached(0)
+          UnCachePDF(props.docLink)
+          
+        }
+      }
+  }/> 
   </div>
   )
 }
 
-/*function App() {
-  const [
-    count,
-    setCount
-  ] = useStickyState(0, "count");
 
-  return (
-    <div className="App">
-      <h1>Counter</h1>
-      <p>Current count: {count}</p>
-      <button
-        onClick={() => setCount(count + 1)}
-      >
-        Increment
-      </button>
-    </div>
-  );
-}
-*/
 
-function DocInfo(){
-  const[
-    Cached,
-    setCached
-  ] = useStickyState(0, "display")
-  return(
-    <div>
-    <button
-    onClick={() => setCached(1)}>
-    Cache
-    </button>
-    <button
-    onClick={() => setCached(0)}>
-    Uncache
-    </button>
-    </div>
-  )
-}
 export default Documents;
