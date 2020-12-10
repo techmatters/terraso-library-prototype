@@ -4,11 +4,15 @@ import React, {useState} from "react";
 import Document from './Document.js';
 
 function CachePDF(url) {
-    alert(url)
+  caches.open('PDFS').then(cache => {
+    cache.add(url)
+  })
   
 }
 function UnCachePDF(url){
-  alert("removing"+ url)
+  caches.open('PDFS').then(cache => {
+    cache.delete(url)
+  })
 }
 
 function Documents()
