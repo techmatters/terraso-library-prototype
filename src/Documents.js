@@ -18,11 +18,16 @@ function UnCachePDF(url){
 function Documents()
 {
   return (
+    <>
       <div>
       <DocumentInfo docName="Document 1" docLink="./dummy.pdf"> </DocumentInfo>
-      <DocumentInfo docName="Document 2" docLink="./dummy2.pdf"> </DocumentInfo>
       
       </div>
+      <div>
+        <iframe src="./dummy.pdf" height="200" width="300" title="Iframe Example"></iframe>
+        <iframe src="./dummy2.pdf" height="200" width="300" title="Iframe Example"></iframe>
+      </div>
+      </>
     );
 }
 
@@ -44,6 +49,7 @@ function DocumentInfo(props){
     cached,
     setCached
   ] = useStickyState(0,props.docName)
+  const [ShowDocument, setShowDocument] = useState(0)
   const [buttonText, setButtonText] = useState("Cache")
   var imgSource = "./heartgrey.png"
   if (cached === 1){
@@ -51,9 +57,10 @@ function DocumentInfo(props){
   }
   
   return(<div>
- 
-  <button class="btn-secondary btn-lg">
+  
+  <button class="btn-secondary btn-lg" onClick>
     {props.docName}
+  
   </button>
   <img src={imgSource}
     onClick={function()
