@@ -21,7 +21,7 @@ i18n
   .init({
     debug: true,
     resources,
-    lng: 'en',
+    lng: window.localStorage.getItem("Language"),
     fallbackLng: 'en',
     whitelist: ['en', 'sp'],
  
