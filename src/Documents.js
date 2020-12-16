@@ -43,22 +43,12 @@ function useSessionState(defaultValue, key) {
 
 function Documents()
 {
-  const [showButtons, setShowButtons] = useState(null);
-return (
+  return (
     <>
-      <DocumentInfo docName="Document 1" docLink="./dummy.pdf"> </DocumentInfo>
-      <DocumentInfo docName="Document 2" docLink="./dummy2.pdf"> </DocumentInfo>
+      <LiftState></LiftState>
     </>
     );
 }
-
-function BoilingVerdict(props) {
-  if (props.celsius >= 100){
-    return <p>The water would boil.</p>;
-  }
-  return <p> the water would not boil</p>
-}
-
 
 function DocumentInfo(props){
   const[
@@ -78,8 +68,8 @@ function DocumentInfo(props){
   
   <button class="btn-secondary btn-lg">
     {props.docName}
-  
   </button>
+  
   <img src={imgSource}
     onClick={function()
       {
