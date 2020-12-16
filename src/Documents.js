@@ -15,18 +15,6 @@ function UnCachePDF(url){
   })
 }
 
-
-function Documents()
-{
-return (
-    <>
-      
-      <DocumentInfo docName="Document 1" docLink="./dummy.pdf"> </DocumentInfo>
-      <DocumentInfo docName="Document 2" docLink="./dummy2.pdf"> </DocumentInfo>
-    </>
-    );
-}
-
 function useStickyState(defaultValue, key) {
   const [value, setValue] = React.useState(() => {
     const stickyValue = window.localStorage.getItem(key);
@@ -52,6 +40,25 @@ function useSessionState(defaultValue, key) {
   }, [key, value]);
   return [value, setValue];
 }
+
+function Documents()
+{
+  const [showButtons, setShowButtons] = useState(null);
+return (
+    <>
+      <DocumentInfo docName="Document 1" docLink="./dummy.pdf"> </DocumentInfo>
+      <DocumentInfo docName="Document 2" docLink="./dummy2.pdf"> </DocumentInfo>
+    </>
+    );
+}
+
+function BoilingVerdict(props) {
+  if (props.celsius >= 100){
+    return <p>The water would boil.</p>;
+  }
+  return <p> the water would not boil</p>
+}
+
 
 function DocumentInfo(props){
   const[
