@@ -15,31 +15,14 @@ function UnCachePDF(url){
   })
 }
 
+
 function Documents()
 {
-  const[
-    ShowButtons,
-    SetShowButtons
-  ] = useSessionState(true,"Show")
-  const[
-    ShowIframe,
-    SetShowIframe
-  ] = useSessionState(true,"Iframe")
-  const[
-    ShowBack,
-    setShowBack
-  ] = useSessionState(true,"Back")
-  return (
+return (
     <>
-      {ShowButtons && <div>
+      
       <DocumentInfo docName="Document 1" docLink="./dummy.pdf"> </DocumentInfo>
       <DocumentInfo docName="Document 2" docLink="./dummy2.pdf"> </DocumentInfo>
-      </div>
-      }
-      {ShowIframe && <iframe src="./dummy2.pdf#toolbar=0&view=FitW" height="500" width="100%" title="Iframe Example"></iframe>}
-      {ShowBack && <button class="btn-secondary btn-lg">
-        Back
-      </button>}
     </>
     );
 }
