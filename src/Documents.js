@@ -17,17 +17,30 @@ function UnCachePDF(url){
 
 function Documents()
 {
+  const[
+    ShowButtons,
+    SetShowButtons
+  ] = useSessionState(true,"Show")
+  const[
+    ShowIframe,
+    SetShowIframe
+  ] = useSessionState(true,"Iframe")
+  const[
+    ShowBack,
+    setShowBack
+  ] = useSessionState(true,"Back")
   return (
     <>
-      <div>
+      {ShowButtons && <div>
       <DocumentInfo docName="Document 1" docLink="./dummy.pdf"> </DocumentInfo>
-      
+      <DocumentInfo docName="Document 2" docLink="./dummy2.pdf"> </DocumentInfo>
       </div>
-      <div>
-        <iframe src="./dummy.pdf" height="200" width="300" title="Iframe Example"></iframe>
-        <iframe src="./dummy2.pdf" height="200" width="300" title="Iframe Example"></iframe>
-      </div>
-      </>
+      }
+      {ShowIframe && <iframe src="./dummy2.pdf#toolbar=0&view=FitW" height="500" width="100%" title="Iframe Example"></iframe>}
+      {ShowBack && <button class="btn-secondary btn-lg">
+        Back
+      </button>}
+    </>
     );
 }
 
@@ -44,21 +57,36 @@ function useStickyState(defaultValue, key) {
   return [value, setValue];
 }
 
+function useSessionState(defaultValue, key) {
+  const [value, setValue] = React.useState(() => {
+    const stickyValue = window.sessionStorage.getItem(key);
+    return stickyValue !== null
+      ? JSON.parse(stickyValue)
+      : defaultValue;
+  });
+  React.useEffect(() => {
+    window.sessionStorage.setItem(key, JSON.stringify(value));
+  }, [key, value]);
+  return [value, setValue];
+}
+
 function DocumentInfo(props){
   const[
     cached,
     setCached
   ] = useStickyState(0,props.docName)
   const [ShowDocument, setShowDocument] = useState(0)
-  const [buttonText, setButtonText] = useState("Cache")
+  
+  
   var imgSource = "./heartgrey.png"
   if (cached === 1){
     imgSource = "./heart.png"
   }
   
-  return(<div>
+  return(
+  <div>
   
-  <button class="btn-secondary btn-lg" onClick>
+  <button class="btn-secondary btn-lg">
     {props.docName}
   
   </button>
@@ -79,7 +107,5 @@ function DocumentInfo(props){
   </div>
   )
 }
-
-
 
 export default Documents;
