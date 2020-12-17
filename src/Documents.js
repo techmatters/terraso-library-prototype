@@ -2,6 +2,7 @@ import React, {useState} from "react";
 //import Document from "./Document"
 //import Button from 'react-bootstrap/Button';
 import Document from './Document.js';
+import LiftState from './LiftState';
 
 function CachePDF(url) {
   caches.open('PDFS').then(cache => {
