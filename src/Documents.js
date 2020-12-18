@@ -47,30 +47,27 @@ class Documents extends React.Component {
 
       // Bind the this context to the handler function
       this.handler = this.handler.bind(this);
+      this.setIframe = this.handler.bind(this);
 
       // Set some state
       this.state = {
           DocButtonsShown: true,
           IframeShown: false,
           BackButtonShown: false,
-          IframeValue: "./dummy.pdf"
+          IframeValue: "./"
           
       };
   }
 
   // This method will be sent to the child component
-  handler() {
+  handler(url) {
       this.setState({
           DocButtonsShown: !this.state.DocButtonsShown,
           IframeShown: !this.state.IframeShown,
-          BackButtonShown: !this.state.BackButtonShown
+          BackButtonShown: !this.state.BackButtonShown,
+          IframeValue: url
       });
   }
-  setIframe(link) {
-    this.setState({
-        IframeValue: link
-    });
-}
 
   // Render the child component and set the action property with the handler as value
   render() {
@@ -106,7 +103,7 @@ function DocumentInfo(props){
   return(
   <div>
   
-  <button class="btn-secondary btn-lg" onClick={props.ChangeView}>
+  <button class="btn-secondary btn-lg" onClick= {() =>{props.ChangeView(props.docLink)}}>
     {props.docName}
   
   </button>
