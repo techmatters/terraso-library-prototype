@@ -2,7 +2,6 @@ import React, {useState} from "react";
 //import Document from "./Document"
 //import Button from 'react-bootstrap/Button';
 import Document from './Document.js';
-import LiftState from './LiftState';
 
 function CachePDF(url) {
   caches.open('PDFS').then(cache => {
@@ -42,13 +41,54 @@ function useSessionState(defaultValue, key) {
   return [value, setValue];
 }
 
-function Documents()
-{
-  return (
-    <>
-      <LiftState></LiftState>
-    </>
-    );
+class Documents extends React.Component {
+  constructor(props) {
+      super(props)
+
+      // Bind the this context to the handler function
+      this.handler = this.handler.bind(this);
+
+      // Set some state
+      this.state = {
+          DocButtonsShown: true,
+          IframeShown: false,
+          BackButtonShown: false,
+          IframeValue: "./dummy.pdf"
+          
+      };
+  }
+
+  // This method will be sent to the child component
+  handler() {
+      this.setState({
+          DocButtonsShown: !this.state.DocButtonsShown,
+          IframeShown: !this.state.IframeShown,
+          BackButtonShown: !this.state.BackButtonShown
+      });
+  }
+  setIframe(link) {
+    this.setState({
+        IframeValue: link
+    });
+}
+
+  // Render the child component and set the action property with the handler as value
+  render() {
+    return (
+      <>
+      {this.state.DocButtonsShown &&
+      <div>
+      <DocumentInfo docName="Document 1" docLink="./dummy.pdf" ChangeView={this.handler}> </DocumentInfo>
+      <DocumentInfo docName="Document 2" docLink="./dummy2.pdf" ChangeView={this.handler}> </DocumentInfo>
+      </div>
+      }
+      {this.state.IframeShown && <iframe src={this.state.IframeValue} height="500" width="100%" title="Iframe Example"></iframe>}
+      {this.state.BackButtonShown && <button class="btn-secondary btn-lg" onClick ={this.handler}>
+        Back
+      </button>}
+      </>
+    )
+  }
 }
 
 function DocumentInfo(props){
@@ -58,7 +98,6 @@ function DocumentInfo(props){
   ] = useStickyState(0,props.docName)
   const [ShowDocument, setShowDocument] = useState(0)
   
-  
   var imgSource = "./heartgrey.png"
   if (cached === 1){
     imgSource = "./heart.png"
@@ -67,10 +106,10 @@ function DocumentInfo(props){
   return(
   <div>
   
-  <button class="btn-secondary btn-lg">
+  <button class="btn-secondary btn-lg" onClick={props.ChangeView}>
     {props.docName}
-  </button>
   
+  </button>
   <img src={imgSource}
     onClick={function()
       {
