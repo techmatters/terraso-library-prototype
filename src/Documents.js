@@ -4,6 +4,10 @@ import React, {useState} from "react";
 //import Button from 'react-bootstrap/Button';
 import Document from './Document.js';
 import { registerRoute } from 'workbox-routing';
+import { clientsClaim } from 'workbox-core';
+import { ExpirationPlugin } from 'workbox-expiration';
+import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
+import { StaleWhileRevalidate } from 'workbox-strategies';
 
 function CachePDF(url) {
   caches.open('PDFS').then(cache => {
@@ -17,13 +21,7 @@ function UnCachePDF(url){
   })
 }
 
-async function getCachedData( cacheName, url ) {
-  const cacheStorage   = await caches.open( cacheName );
-  const cachedResponse = await cacheStorage.match( url );
 
-  alert(cachedResponse.url)
-  return cachedResponse.url
-}
 
 function useStickyState(defaultValue, key) {
   const [value, setValue] = React.useState(() => {
@@ -102,10 +100,8 @@ class Documents extends React.Component {
       {this.state.BackButtonShown && <button class="btn-secondary btn-lg" onClick= {() =>{this.handler("./")}}>
         Back
       </button>}
-      <button class="btn-secondary btn-lg" onClick= {() =>{getCachedData("PDFS", "samplePDF.pdf")}}>
-        Test
-      </button>
-      <iframe src={getCachedData("PDFS", "samplePDF.pdf")} height="500" width="100%" title="Iframe Example"></iframe>
+
+      
       </>
     )
   }
