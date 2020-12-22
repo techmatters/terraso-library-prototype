@@ -4,6 +4,7 @@ import React, {useState} from "react";
 //import Button from 'react-bootstrap/Button';
 import Document from './Document.js';
 import { registerRoute } from 'workbox-routing';
+
 function CachePDF(url) {
   caches.open('PDFS').then(cache => {
     cache.add(url)
@@ -14,6 +15,14 @@ function UnCachePDF(url){
   caches.open('PDFS').then(cache => {
     cache.delete(url)
   })
+}
+
+async function getCachedData( cacheName, url ) {
+  const cacheStorage   = await caches.open( cacheName );
+  const cachedResponse = await cacheStorage.match( url );
+
+  alert(cachedResponse.url)
+  return cachedResponse.url
 }
 
 function useStickyState(defaultValue, key) {
@@ -74,20 +83,29 @@ class Documents extends React.Component {
     }
     return value
   }
+
+  
+    
   // Render the child component and set the action property with the handler as value
   render() {
     return (
       <>
       {this.state.DocButtonsShown &&
       <div>
-      <DocumentInfo docName="Document 1" docLink="./dummy.pdf" ChangeView={this.handler}> </DocumentInfo>
-      <DocumentInfo docName="Document 2" docLink="./dummy2.pdf" ChangeView={this.handler}> </DocumentInfo>
+      <DocumentInfo docName="Sample PDF" docLink="./samplePDF.pdf" ChangeView={this.handler}> </DocumentInfo>
+      <DocumentInfo docName="Sample PNG" docLink="./samplePNG.png" ChangeView={this.handler}> </DocumentInfo>
+      <DocumentInfo docName="Sample Webpage" docLink="./samplehtm.htm" ChangeView={this.handler}> </DocumentInfo>
+      
       </div>
       }
       {this.state.IframeShown && <iframe src={this.state.IframeValue + "#toolbar=0&navpanes=0"} height="500" width="100%" title="Iframe Example"></iframe>}
       {this.state.BackButtonShown && <button class="btn-secondary btn-lg" onClick= {() =>{this.handler("./")}}>
         Back
       </button>}
+      <button class="btn-secondary btn-lg" onClick= {() =>{getCachedData("PDFS", "samplePDF.pdf")}}>
+        Test
+      </button>
+      <iframe src={getCachedData("PDFS", "samplePDF.pdf")} height="500" width="100%" title="Iframe Example"></iframe>
       </>
     )
   }
