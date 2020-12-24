@@ -10,15 +10,30 @@ import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 
 function CachePDF(url) {
-  caches.open('PDFS').then(cache => {
-    cache.add(url)
+  caches.open("offline-" + url).then(function(cache) {
+    var updateCache = cache.add(url);
+    updateCache.then(function() {
+      console.log("Article is now available offline.");
+    }).catch(function (error) {
+      console.log("Article could not be saved offline")
+    })
   })
-  
 }
 function UnCachePDF(url){
-  caches.open('PDFS').then(cache => {
+  caches.open("offline-"+url).then(cache => {
     cache.delete(url)
   })
+}
+function retrievePDF(url){
+  caches.open("resources").then(cache =>{
+  cache.match(url).then(res =>{
+    if (res == undefined){
+      return ("./CacheMessage.pdf")
+    }
+    alert(res.url)
+  })
+})
+
 }
 
 
@@ -101,7 +116,8 @@ class Documents extends React.Component {
         Back
       </button>}
 
-      
+      <iframe src="./samplePDF.pdf" height="500" width="100%" title="Iframe Example"></iframe>
+
       </>
     )
   }
