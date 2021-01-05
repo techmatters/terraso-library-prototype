@@ -14,12 +14,12 @@ const Dropdown = () => {
     {t('Dropdown.Title')}
     </a>
 
-    <div class="dropdown-menu" href="#" aria-labelledby="dropdownMenuLink">
-      <a class="dropdown-item" href="#" onClick={() => {changeLanguage('sp') 
+    <div class="dropdown-menu" href="!#" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="!#" onClick={() => {changeLanguage('sp') 
       window.localStorage.setItem("Language","sp")}}>
         Espanol
       </a>
-      <a class="dropdown-item" href="#" onClick={() => {changeLanguage('en') 
+      <a class="dropdown-item" href="!#" onClick={() => {changeLanguage('en') 
       window.localStorage.setItem("Language","en")}}>
         English
       </a>

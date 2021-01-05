@@ -36,19 +36,30 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <SCRIPT>
-      // Check for browser support of service worker if ('serviceWorker' in navigator) { navigator.serviceWorker.register('service-worker.js') .then(function(registration) { // Successful registration console.log('Hooray. Registration successful, scope is:', registration.scope); }).catch(function(err) { // Failed registration, service worker won’t be installed console.log('Whoops. Service worker registration failed, error:', error); }); }
-// Check for browser support of service worker
-if ('serviceWorker' in navigator) {
- navigator.serviceWorker.register('service-worker.js')
- .then(function(registration) {
-   // Successful registration
-   console.log('Hooray. Registration successful, scope is:', registration.scope);
- }).catch(function(err) {
-   // Failed registration, service worker won’t be installed
-   console.log('Whoops. Service worker registration failed, error:', error);
- });
-}
-      </SCRIPT>
+    <script type="module">
+      import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/6.0.2/workbox-window.prod.mjs';
+      
+        function createUIPrompt(opts) {
+          if (confirm('There is a new version of the Terraso PWA available. would you like to install now?')) {
+             opts.onAccept()
+          }
+        }
+      
+        if ('serviceWorker' in navigator) {
+          const wb = new Workbox('./service-worker.js');
+          wb.addEventListener('waiting', (event) => {
+            const prompt = createUIPrompt({
+              onAccept: async () => {
+                wb.addEventListener('controlling', (event) => {
+                  window.location.reload();
+                });
+                wb.messageSW({type: 'SKIP_WAITING'});
+              }
+            })
+          });
+          wb.register();
+        }
+        </script>
+    
   </body>
 </html>

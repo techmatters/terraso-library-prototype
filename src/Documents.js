@@ -1,17 +1,14 @@
-import { a } from "aws-amplify";
-import React, {useState} from "react";
+
+import React from "react";
 //import Document from "./Document"
 //import Button from 'react-bootstrap/Button';
-import Document from './Document.js';
-import { registerRoute } from 'workbox-routing';
-import { clientsClaim } from 'workbox-core';
-import { ExpirationPlugin } from 'workbox-expiration';
-import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
-import { StaleWhileRevalidate } from 'workbox-strategies';
+
+
+
 
 function CachePDF(url) {
-  caches.open("offline-" + url).then(function(cache) {
-    var updateCache = cache.add(url);
+  caches.open('resources').then(function(cache) {
+    var updateCache = cache.add("Res_"+url);
     updateCache.then(function() {
       console.log("Article is now available offline.");
     }).catch(function (error) {
@@ -20,23 +17,11 @@ function CachePDF(url) {
   })
 }
 function UnCachePDF(url){
-  caches.open("offline-"+url).then(cache => {
-    cache.delete(url)
+  caches.open('resources').then(cache => {
+    cache.delete("Res_"
+    +url)
   })
 }
-function retrievePDF(url){
-  caches.open("resources").then(cache =>{
-  cache.match(url).then(res =>{
-    if (res == undefined){
-      return ("./CacheMessage.pdf")
-    }
-    alert(res.url)
-  })
-})
-
-}
-
-
 
 function useStickyState(defaultValue, key) {
   const [value, setValue] = React.useState(() => {
@@ -86,12 +71,12 @@ class Documents extends React.Component {
   }
   handleSession(key,value){
     const StorageValue = window.sessionStorage.getItem(key)
-    if (key == "IframeValue" && StorageValue != null){
+    if (key === "IframeValue" && StorageValue != null){
       return StorageValue
     }
     else if (StorageValue != null)
     {
-      var ToReturn = (StorageValue== "true");
+      var ToReturn = (StorageValue==="true");
       return ToReturn
     }
     return value
@@ -105,18 +90,18 @@ class Documents extends React.Component {
       <>
       {this.state.DocButtonsShown &&
       <div>
-      <DocumentInfo docName="Sample PDF" docLink="./samplePDF.pdf" ChangeView={this.handler}> </DocumentInfo>
-      <DocumentInfo docName="Sample PNG" docLink="./samplePNG.png" ChangeView={this.handler}> </DocumentInfo>
-      <DocumentInfo docName="Sample Webpage" docLink="./samplehtm.htm" ChangeView={this.handler}> </DocumentInfo>
+      <DocumentInfo docName="Sample PDF" docLink="./Documents/samplePDF.pdf" ChangeView={this.handler}> </DocumentInfo>
+      <DocumentInfo docName="Sample PNG" docLink="./Documents/samplePNG.png" ChangeView={this.handler}> </DocumentInfo>
+      <DocumentInfo docName="Webpage" docLink="./Documents/samplehtm.htm" ChangeView={this.handler}> </DocumentInfo>
       
       </div>
       }
-      {this.state.IframeShown && <iframe src={this.state.IframeValue + "#toolbar=0&navpanes=0"} height="500" width="100%" title="Iframe Example"></iframe>}
+      {this.state.IframeShown && <iframe src={this.state.IframeValue} height="500" width="100%" title="Iframe Example"></iframe>}
       {this.state.BackButtonShown && <button class="btn-secondary btn-lg" onClick= {() =>{this.handler("./")}}>
         Back
       </button>}
 
-      <iframe src="./samplePDF.pdf" height="500" width="100%" title="Iframe Example"></iframe>
+     
 
       </>
     )
@@ -128,7 +113,7 @@ function DocumentInfo(props){
     cached,
     setCached
   ] = useStickyState(0,props.docName)
-  const [ShowDocument, setShowDocument] = useState(0)
+  
   
   var imgSource = "./heartgrey.png"
   if (cached === 1){
@@ -142,7 +127,7 @@ function DocumentInfo(props){
     {props.docName}
   
   </button>
-  <img src={imgSource}
+  <img src={imgSource} alt="button images"
     onClick={function()
       {
         if (cached === 0){
