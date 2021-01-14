@@ -1,25 +1,22 @@
-
 import React from "react";
-//import Document from "./Document"
-//import Button from 'react-bootstrap/Button';
-
-
-
 
 function CachePDF(url) {
-  caches.open('resources').then(function(cache) {
-    var updateCache = cache.add("Res_"+url);
+  console.log(url)
+  caches.open('favorites').then(function(cache) {
+    var updateCache = cache.add(url);
     updateCache.then(function() {
-      console.log("Article is now available offline.");
+      console.log("article was cached")
+      return true
+      
     }).catch(function (error) {
-      console.log("Article could not be saved offline")
+      console.log("article was not cached")
+      return false
     })
   })
 }
 function UnCachePDF(url){
-  caches.open('resources').then(cache => {
-    cache.delete("Res_"
-    +url)
+  caches.open('favorites').then(cache => {
+    cache.delete(url)
   })
 }
 
@@ -37,7 +34,7 @@ function useStickyState(defaultValue, key) {
 }
 
 
-class Documents extends React.Component {
+class DocumentContainer extends React.Component {
   constructor(props) {
       super(props)
 
@@ -122,7 +119,6 @@ function DocumentInfo(props){
   
   return(
   <div>
-  
   <button class="btn-secondary btn-lg" onClick= {() =>{props.ChangeView(props.docLink)}}>
     {props.docName}
   
@@ -131,8 +127,12 @@ function DocumentInfo(props){
     onClick={function()
       {
         if (cached === 0){
-          setCached(1)
-          CachePDF(props.docLink)
+          var return_value = CachePDF(props.docLink)
+          if (return_value === true){
+            setCached(1)
+          }
+          
+          
         }
         else{
           setCached(0)
@@ -145,4 +145,4 @@ function DocumentInfo(props){
   )
 }
 
-export default Documents;
+export default DocumentContainer

@@ -5,7 +5,7 @@ import {
   HashRouter
 } from "react-router-dom";
 import Home from "./Home";
-import Documents from "./Documents";
+import DocumentContainer from "./DocumentContainer";
 import About from "./About";
 
 //import Card from "./Dropdown"
@@ -27,7 +27,7 @@ function Main()
         </ul>
         <div className="content">
           <Route exact path="/" component={Home}/>
-          <Route path="/Documents" component={Documents}/>
+          <Route path="/Documents" component={DocumentContainer}/>
           <Route path="/About" component={About}/>
         </div>   
       </div>
