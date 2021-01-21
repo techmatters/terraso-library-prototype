@@ -1,39 +1,6 @@
 import React from "react";
-
-function CachePDF(url) {
-  console.log(url)
-  caches.open('favorites').then(function(cache) {
-    var updateCache = cache.add(url);
-    updateCache.then(function() {
-      console.log("article was cached")
-      return true
-      
-    }).catch(function (error) {
-      console.log("article was not cached")
-      return false
-    })
-  })
-}
-function UnCachePDF(url){
-  caches.open('favorites').then(cache => {
-    cache.delete(url)
-  })
-}
-
-function useStickyState(defaultValue, key) {
-  const [value, setValue] = React.useState(() => {
-    const stickyValue = window.localStorage.getItem(key);
-    return stickyValue !== null
-      ? JSON.parse(stickyValue)
-      : defaultValue;
-  });
-  React.useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  }, [key, value]);
-  return [value, setValue];
-}
-
-
+import DocumentInfo from "./DocumentInfo"
+import {useStickyState, CachePDF, UnCacheDPF} from "./CacheFunctions"
 class DocumentContainer extends React.Component {
   constructor(props) {
       super(props)
@@ -88,7 +55,7 @@ class DocumentContainer extends React.Component {
       {this.state.DocButtonsShown &&
       <div>
       <DocumentInfo docName="Sample PDF" docLink="./Documents/samplePDF.pdf" ChangeView={this.handler}> </DocumentInfo>
-      <DocumentInfo docName="Sample PNG" docLink="./Documents/samplePNG.png" ChangeView={this.handler}> </DocumentInfo>
+      <DocumentInfo docName="Sample PNG" download docLink="./Documents/samplePNG.png" ChangeView={this.handler}> </DocumentInfo>
       <DocumentInfo docName="Webpage" docLink="./Documents/samplehtm.htm" ChangeView={this.handler}> </DocumentInfo>
       
       </div>
@@ -104,45 +71,4 @@ class DocumentContainer extends React.Component {
     )
   }
 }
-
-function DocumentInfo(props){
-  const[
-    cached,
-    setCached
-  ] = useStickyState(0,props.docName)
-  
-  
-  var imgSource = "./heartgrey.png"
-  if (cached === 1){
-    imgSource = "./heart.png"
-  }
-  
-  return(
-  <div>
-  <button class="btn-secondary btn-lg" onClick= {() =>{props.ChangeView(props.docLink)}}>
-    {props.docName}
-  
-  </button>
-  <img src={imgSource} alt="button images"
-    onClick={function()
-      {
-        if (cached === 0){
-          var return_value = CachePDF(props.docLink)
-          if (return_value === true){
-            setCached(1)
-          }
-          
-          
-        }
-        else{
-          setCached(0)
-          UnCachePDF(props.docLink)
-          
-        }
-      }
-  }/> 
-  </div>
-  )
-}
-
 export default DocumentContainer
