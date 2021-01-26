@@ -23,6 +23,10 @@ const Dropdown = () => {
       window.localStorage.setItem("Language","en")}}>
         English
       </a>
+      <a class="dropdown-item" href="!#" onClick={() => {changeLanguage('fr') 
+      window.localStorage.setItem("Language","fr")}}>
+        Français
+      </a>
     </div>
     </div>
   );
