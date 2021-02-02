@@ -17,17 +17,24 @@ function DocumentInfo(props){
             {props.docName}
         </button>
         <img src={imgSource} alt="button images"
-            onClick={function()
-            {
-            if (cached === 0){
-                var return_value = CachePDF(props.docLink)
-                console.log(return_value)
-                }
-            else{
-            setCached(0)
-            UnCachePDF(props.docLink)}
-            }
-        }/> 
+        onClick={async function()
+        {
+        if (cached === 0){
+          var return_value = await CachePDF(props.docLink)
+          console.log(return_value)
+          if (return_value === true){
+              setCached(1)    
+          }
+          else{ 
+             setCached(0)
+          }
+        }
+        else{
+          setCached(0)
+          UnCachePDF(props.docLink)
+        }
+      }
+    }/> 
         </div>)
 }
 

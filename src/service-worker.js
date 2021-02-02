@@ -19,13 +19,14 @@ clientsClaim();
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
 precacheAndRoute(self.__WB_MANIFEST);
-precacheAndRoute(["./heart.png", "./heartgrey.png"])
+precacheAndRoute(["./heart.png", "./heartgrey.png", "logo192.png"])
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open("documents");
     // Setting {cache: 'reload'} in the new request will ensure that the response
     // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
     await cache.add("offline.html");
+  
   })());
 });
 // Set up App Shell-style routing, so that all navigation requests
@@ -55,18 +56,7 @@ registerRoute(
 
 // An example runtime caching route for requests that aren't handled by the
 // precache, in this case same-origin .png requests like those from in public/
-registerRoute(
-  // Add in any other file extensions or routing criteria as needed.
-  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('.png'), // Customize this strategy as needed, e.g., by changing to CacheFirst.
-  new StaleWhileRevalidate({
-    cacheName: 'images',
-    plugins: [
-      // Ensure that once this runtime cache reaches a maximum size the
-      // least-recently used images are removed.
-      new ExpirationPlugin({ maxEntries: 50 }),
-    ],
-  })
-);
+
 registerRoute(
   new RegExp("./locales/en/translation.json"),
     new StaleWhileRevalidate({
@@ -85,7 +75,15 @@ new RegExp("./locales/.*/translation.json"),
    ],
  })
 );
-
+registerRoute(
+new RegExp("./Documents/.*"),
+  new StaleWhileRevalidate({
+   cacheName: 'testing',
+   plugins:[
+     new ExpirationPlugin({maxEntires:1}),
+   ],
+ })
+);
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
