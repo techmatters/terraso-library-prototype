@@ -1,11 +1,8 @@
 import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
-
 import Main from './Main';
-
 import reportWebVitals from './reportWebVitals';
 import "./i18n.js"
-
 import i18next from "i18next"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
@@ -14,18 +11,31 @@ import 'bootstrap/dist/js/bootstrap.js';
  //USED FOR VISUAL COMPONENTS: COULD BE CHANGED TO MAKE SMALLER
 import './index.css';
 
+import { Provider, Client, dedupExchange, fetchExchange } from 'urql'
+import { cacheExchange } from '@urql/exchange-graphcache'
 
+const cache = cacheExchange({})
 
+const client = new Client({
+  url: 'http://localhost:4000',
+  exchanges: [dedupExchange, cache, fetchExchange],
+})
 
 i18next.init({
   interpolation: {escapeValue: false},
 });
 ReactDOM.render(
+  
   <Suspense fallback={null}>
+  <Provider>
   <Main/>
+  </Provider>
   </Suspense>,
+  
   document.getElementById('root')
+  
 );
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

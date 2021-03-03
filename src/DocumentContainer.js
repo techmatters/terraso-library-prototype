@@ -1,6 +1,8 @@
 import React from "react";
 import DocumentInfo from "./DocumentInfo"
-import {useStickyState, CachePDF, UnCacheDPF} from "./CacheFunctions"
+import {useStickyState, CachePDF, UnCacheDPF, callAPI} from "./CacheFunctions"
+import LinkList from "./LinkList"
+
 class DocumentContainer extends React.Component {
   constructor(props) {
       super(props)
@@ -54,19 +56,13 @@ class DocumentContainer extends React.Component {
       <>
       {this.state.DocButtonsShown &&
       <div>
-      <DocumentInfo docName="Sample PDF" docLink="./Documents/samplePDF.pdf" ChangeView={this.handler}> </DocumentInfo>
-      <DocumentInfo docName="Sample PNG" download docLink="./Documents/samplePNG.png" ChangeView={this.handler}> </DocumentInfo>
-      <DocumentInfo docName="Webpage" docLink="./Documents/samplehtm.htm" ChangeView={this.handler}> </DocumentInfo>
-      
+        <LinkList> </LinkList>
       </div>
       }
       {this.state.IframeShown && <iframe src={this.state.IframeValue} height="500" width="100%" title="Iframe Example"></iframe>}
       {this.state.BackButtonShown && <button class="btn-secondary btn-lg" onClick= {() =>{this.handler("./")}}>
         Back
       </button>}
-
-     
-
       </>
     )
   }

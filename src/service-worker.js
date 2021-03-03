@@ -19,16 +19,8 @@ clientsClaim();
 // This variable must be present somewhere in your service worker file,
 // even if you decide not to use precaching. See https://cra.link/PWA
 precacheAndRoute(self.__WB_MANIFEST);
-precacheAndRoute(["./heart.png", "./heartgrey.png", "logo192.png"])
-self.addEventListener('install', (event) => {
-  event.waitUntil((async () => {
-    const cache = await caches.open("documents");
-    // Setting {cache: 'reload'} in the new request will ensure that the response
-    // isn't fulfilled from the HTTP cache; i.e., it will be from the network.
-    await cache.add("offline.html");
-  
-  })());
-});
+precacheAndRoute(["./heart.png", "./heartgrey.png", "logo192.png", "offline.html"])
+
 // Set up App Shell-style routing, so that all navigation requests
 // are fulfilled with your index.html shell. Learn more at
 // https://developers.google.com/web/fundamentals/architecture/app-shell
@@ -75,7 +67,7 @@ new RegExp("./locales/.*/translation.json"),
    ],
  })
 );
-registerRoute(
+/*registerRoute(
 new RegExp("./Documents/.*"),
   new StaleWhileRevalidate({
    cacheName: 'testing',
@@ -83,7 +75,7 @@ new RegExp("./Documents/.*"),
      new ExpirationPlugin({maxEntires:1}),
    ],
  })
-);
+);*/
 
 // This allows the web app to trigger skipWaiting via
 // registration.waiting.postMessage({type: 'SKIP_WAITING'})
@@ -134,14 +126,20 @@ self.addEventListener('fetch', (event) => {
   if (event.request.url.includes("Documents")) {
     event.respondWith((async () => {
       try {
-        
-        const networkResponse = await fetch(event.request);
+        const favoritesCache = await caches.open('favorites')
+        const favoritesResponse = await favoritesCache.match(event.request.url)
+        if (favoritesResponse != undefined){
+          console.log("found document in favorites cache")
+          return favoritesResponse
+        }
+        const networkResponse = await fetch(event.request,{redirect: 'follow'});
         return networkResponse;
+
       } catch (error) {
         console.log('Fetch failed; returning offline page instead.', error);
 
         const cache = await caches.open("documents");
-        const cachedResponse = await cache.match("offline.html");
+        const cachedResponse = await cache.match("./offline.html");
         return cachedResponse;
       }
     })());

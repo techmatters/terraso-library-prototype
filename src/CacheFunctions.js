@@ -2,7 +2,12 @@ import React from "react";
 
 export function CachePDF(url) {
   return caches.open('favorites').then(function(cache) {
-    var updateCache = cache.add(url);
+    var updateCache = fetch(url, {redirect:"error"}).then(function(response) {
+      if (!response.ok) {
+        throw new TypeError('bad response status');
+      }
+      return cache.put(url, response);
+    })
     return updateCache.then(function() {
       console.log("article was cached in favorites")
       caches.open("documents").then(function(cache){
@@ -16,13 +21,14 @@ export function CachePDF(url) {
     })
   })
 }
-  export function UnCachePDF(url){
+
+export function UnCachePDF(url){
     caches.open('favorites').then(cache => {
       cache.delete(url)
     })
-  }
-  
-  export function useStickyState(defaultValue, key) {
+}
+
+export function useStickyState(defaultValue, key) {
     const [value, setValue] = React.useState(() => {
       const stickyValue = window.localStorage.getItem(key);
       return stickyValue !== null
@@ -33,7 +39,7 @@ export function CachePDF(url) {
       window.localStorage.setItem(key, JSON.stringify(value));
     }, [key, value]);
     return [value, setValue];
-  }
+}
 
-  
+
   
