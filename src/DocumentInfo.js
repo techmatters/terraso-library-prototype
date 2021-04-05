@@ -1,10 +1,11 @@
-import {useStickyState, CachePDF, UnCachePDF} from "./CacheFunctions"
+import {UseStickyState, CacheDocument, UncacheDocument} from "./CacheFunctions"
+import React from 'react';
 
 function DocumentInfo(props){
     const[
       cached,
       setCached
-    ] = useStickyState(0,props.docName)
+    ] = UseStickyState(0,props.docName)
      
     var imgSource = "./heartgrey.png"
     if (cached === 1){
@@ -12,15 +13,16 @@ function DocumentInfo(props){
     }
     
     return(
-        <div>
-        <button class="btn-secondary btn-lg" onClick= {() =>{props.ChangeView(props.docLink)}}>
-            {props.docName}
+      <React.Fragment>
+        <button onClick= {() =>{props.ChangeView(props.docLink)}}>
+          {props.docName}
         </button>
+        
         <img src={imgSource} alt="button images"
         onClick={async function()
         {
         if (cached === 0){
-          var return_value = await CachePDF(props.docLink)
+          var return_value = await CacheDocument(props.docLink)
           console.log(return_value)
           if (return_value === true){
               setCached(1)    
@@ -31,11 +33,12 @@ function DocumentInfo(props){
         }
         else{
           setCached(0)
-          UnCachePDF(props.docLink)
+          UncacheDocument(props.docLink)
+          }
         }
-      }
-    }/> 
-        </div>)
+        }/> 
+      </React.Fragment>
+    )
 }
 
   export default DocumentInfo

@@ -1,34 +1,26 @@
-import React from 'react'
-import Link from './Link'
-import { useQuery } from 'urql'
-import gql from 'graphql-tag'
-const FEED_QUERY = gql`
-{
-    feed {
-      
-        name
-        url
-        id
-      
-    }
-  }`
+import React from 'react';
+import Link from './Link';
+import { UpdateQuery } from './CacheFunctions';
 
 
 
-  const LinkList = () => {
-    const [result] = useQuery({ query: FEED_QUERY })
-    const { data, fetching, error } = result
+const LinkList = (props) => {
+    //calls the useQuery Apollo hook to fetch the query information from the server.
+    UpdateQuery()
+    const data = JSON.parse(window.localStorage.getItem("Query"))
     
-    if (fetching) return <div>Fetching</div>
-    if (error) return <div>Error</div>
     
-    const linksToRender = data.feed
-  
     return (
       <div>
-        {linksToRender.map(link => <Link key={link.id} link={link} />)}
-      </div>
-    )
-  }
+        {data && 
+          <React.Fragment>
+            {data.feed.map((link) => (
+              <Link key={link.id} link={link} ChangeView={props.ChangeView}/>
+            ))}
+          </React.Fragment>
+        }
+    </div>
+    );
+};
 
-  export default LinkList
+export default LinkList;

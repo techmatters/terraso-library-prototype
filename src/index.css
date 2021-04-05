@@ -1,5 +1,5 @@
 body {
-    background-color: #1adbf5;
+    background-color: #605444;
     padding: 20px;
     margin: 0;
   }
@@ -12,11 +12,12 @@ body {
     margin: 0;
   }
   ul.header {
-    background-color: #111;
+    background-color: rgb(255, 255, 255);
     padding: 0;
+    
   }
   ul.header li a {
-    color: #FFF;
+    color: #605444;
     font-weight: bold;
     text-decoration: none;
     padding: 20px;
@@ -34,6 +35,6 @@ body {
     margin-bottom: 10px;
   }
   .active {
-    background-color: #0099FF;
+    background-color: #80a45c;
   }
- 
+ .dropdown-menu a{color: #000; text-decoration: none;}

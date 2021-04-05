@@ -1,0 +1,23 @@
+{
+    "short_name": "Terraso PWA",
+    "name": "PWA",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#ffffff",
+    "theme-color": "#ffffff",
+    "background_color": "#000000",
+    "background-color": "#000000",
+    "description": "Cloud Content Prototype",
+    "icons": [
+      {
+        "src": "/Logo192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/Logo512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+  }
