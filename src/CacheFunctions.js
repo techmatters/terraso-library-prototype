@@ -67,10 +67,9 @@ export function UpdateQuery(operation){
   .then(res => res.json())
   .then(res => window.localStorage.setItem("Query", JSON.stringify(res.data)))
   .catch(function(error) {
-    console.log(error)
+    console.log("could not connect to the graphQL server")
   });
-  if (operation ==="reload"){
+  
     window.location.reload()
-  }
   
 }

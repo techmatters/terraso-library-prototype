@@ -58,7 +58,7 @@ class DocumentContainer extends React.Component {
         {this.state.DocButtonsShown &&
         <div>
           <LinkList ChangeView={this.handler}></LinkList>
-          <button className="btn-secondary btn-success" onClick= {() =>{UpdateQuery("reload")}}>
+          <button className="btn-secondary btn-success" onClick= {() =>{UpdateQuery()}}>
                   Refresh
           </button>
         </div>
