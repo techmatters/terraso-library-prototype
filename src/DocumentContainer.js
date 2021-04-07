@@ -2,6 +2,8 @@ import React from "react";
 import LinkList from "./LinkList"
 import {UpdateQuery} from "./CacheFunctions"
 
+/*DocumentContainer is the "main" component on the documents page, responsible for rendering 
+the document buttons and Iframe*/
 class DocumentContainer extends React.Component {
   constructor(props) {
       super(props)
@@ -67,10 +69,7 @@ class DocumentContainer extends React.Component {
           <button class="btn-secondary btn-lg" onClick= {() =>{this.handler("./")}}>
           Back
           </button>
-          
-          
         }  
-
       </React.Fragment>
     )
   }

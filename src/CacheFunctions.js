@@ -49,7 +49,7 @@ export function UseStickyState(defaultValue, key) {
 
 /*updates the graphQL query stored in the Cache*/
 export function UpdateQuery(operation){
-  fetch('http://localhost:4000', {
+  fetch('http://192.168.1.201:4000', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({ query: 
@@ -67,7 +67,7 @@ export function UpdateQuery(operation){
   .then(res => res.json())
   .then(res => window.localStorage.setItem("Query", JSON.stringify(res.data)))
   .catch(function(error) {
-    console.log("FAILED")
+    console.log(error)
   });
   if (operation ==="reload"){
     window.location.reload()
