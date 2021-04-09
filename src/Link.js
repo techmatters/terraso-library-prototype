@@ -10,7 +10,7 @@ function Link (props){
   const[
     cached,
     setCached
-  ] = UseStickyState(0,link.name)
+  ] = UseStickyState(0,link.id)
   /*initializes the value of imgSource based on if the link is cached or not*/
   var imgSource = "./heartgrey.png"
   if (cached === 1){

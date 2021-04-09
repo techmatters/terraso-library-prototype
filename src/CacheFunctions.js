@@ -48,7 +48,7 @@ export function UseStickyState(defaultValue, key) {
 }
 
 /*updates the graphQL query stored in the Cache*/
-export function UpdateQuery(operation){
+export function UpdateQuery(reload){
   fetch('http://192.168.1.201:4000', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
@@ -69,7 +69,5 @@ export function UpdateQuery(operation){
   .catch(function(error) {
     console.log("could not connect to the graphQL server")
   });
-  
     window.location.reload()
-  
 }

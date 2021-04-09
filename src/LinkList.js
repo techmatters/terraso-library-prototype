@@ -7,7 +7,7 @@ import { UpdateQuery } from './CacheFunctions';
 const LinkList = (props) => {
     //calls the useQuery Apollo hook to fetch the query information from the server.
     const data = JSON.parse(window.localStorage.getItem("Query"))
-    
+ 
     return (
       <div>
         {data && 
