@@ -8,6 +8,7 @@
     "@testing-library/react": "^11.1.0",
     "@urql/exchange-graphcache": "^4.0.0",
     "bootstrap": "^4.5.3",
+    "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
     "i18next": "^19.8.3",
     "i18next-xhr-backend": "^3.2.2",

@@ -49,7 +49,7 @@ export function UseStickyState(defaultValue, key) {
 
 /*updates the graphQL query stored in the Cache*/
 export function UpdateQuery(reload) {
-  fetch('http://192.168.1.201:4000', {
+  fetch('http://localhost:4000/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

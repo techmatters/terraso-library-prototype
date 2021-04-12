@@ -7,9 +7,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
+import { config } from './config.js'
 //USED FOR VISUAL COMPONENTS: COULD BE CHANGED TO MAKE SMALLER
 import './index.css';
+require('dotenv').config()
 
+var url = config.url.API_URL
+console.log(url)
 
 //initialize i18next (translation)
 i18next.init({
