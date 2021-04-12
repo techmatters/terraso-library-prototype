@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import Main from './Main';
 import "./i18n.js"
@@ -7,23 +7,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
- //USED FOR VISUAL COMPONENTS: COULD BE CHANGED TO MAKE SMALLER
+//USED FOR VISUAL COMPONENTS: COULD BE CHANGED TO MAKE SMALLER
 import './index.css';
 
 
 //initialize i18next (translation)
 i18next.init({
-  interpolation: {escapeValue: false},
+  interpolation: { escapeValue: false },
 });
 
 /*Renders the root component, wrapping in <Suspense> (prevents errors in i18n) and 
 ApolloProvider (gives access to Apollo client features)*/
 ReactDOM.render(
   <Suspense fallback={null}>
-  
-  <Main></Main>
-  
+    <Main></Main>
   </Suspense>,
   document.getElementById('root')
-  
 );

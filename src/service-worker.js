@@ -51,21 +51,21 @@ registerRoute(
 
 registerRoute(
   new RegExp("./locales/en/translation.json"),
-    new StaleWhileRevalidate({
-     cacheName: 'english',
-     plugins:[
-       new ExpirationPlugin({maxEntries: 1}),
-     ],
-   })
-  );
-registerRoute(
-new RegExp("./locales/.*/translation.json"),
   new StaleWhileRevalidate({
-   cacheName: 'languages',
-   plugins:[
-     new ExpirationPlugin({maxEntries: 1}),
-   ],
- })
+    cacheName: 'english',
+    plugins: [
+      new ExpirationPlugin({ maxEntries: 1 }),
+    ],
+  })
+);
+registerRoute(
+  new RegExp("./locales/.*/translation.json"),
+  new StaleWhileRevalidate({
+    cacheName: 'languages',
+    plugins: [
+      new ExpirationPlugin({ maxEntries: 1 }),
+    ],
+  })
 );
 
 self.addEventListener('message', (event) => {
@@ -77,32 +77,29 @@ self.addEventListener('message', (event) => {
 
 addEventListener('fetch', event => {
   // Prevent the default, and handle the request ourselves.
-  event.respondWith(async function() {
-    
+  event.respondWith(async function () {
+
     const favoritesCache = await caches.open('favorites')
     const favoritesResponse = await favoritesCache.match(event.request.url)
-    if (favoritesResponse !== undefined){
+    if (favoritesResponse !== undefined) {
       console.log("found document in favorites cache")
       return favoritesResponse
     }
     const documentsCache = await caches.open("documents")
     const documentsResponse = await documentsCache.match(event.request.url)
-    if (documentsResponse !== undefined){
+    if (documentsResponse !== undefined) {
       console.log("found document in documents cache")
       return documentsResponse
     }
-    
-    
-    if (event.request.url.includes("/Documents")){
-    documentsCache.add(event.request.url)
+
+
+    if (event.request.url.includes("/Documents")) {
+      documentsCache.add(event.request.url)
     }
     console.log("getting document from network ):")
-    return fetch(event.request, { redirect: "follow" }).catch((error) =>
-    {
-      if (event.request.url.includes("Documents")){
+    return fetch(event.request, { redirect: "follow" }).catch((error) => {
+      if (event.request.url.includes("Documents")) {
         console.log("attempting to reach from offline")
-        
-        
       }
     })
   }());
