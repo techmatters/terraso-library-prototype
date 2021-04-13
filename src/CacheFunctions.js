@@ -49,26 +49,14 @@ export function UseStickyState(defaultValue, key) {
 
 /*updates the graphQL query stored in the Cache*/
 export function UpdateQuery(reload) {
-  fetch('http://localhost:4000/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      query:
-        `
-        {
-          feed {
-            id
-            name
-            url   
-          }
-        }
-        `
-    }),
-  })
-    .then(res => res.json())
-    .then(res => window.localStorage.setItem("Query", JSON.stringify(res.data)))
-    .catch(function (error) {
-      console.log("could not connect to the graphQL server")
-    });
-  window.location.reload()
+  fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-s5726bhsfjfqvn37x33zwyju7q'},
+  body: JSON.stringify({
+    "query": "query MyQuery{listDocuments{items{id name url priority}}}",
+    "variables": {}
+  }),
+})
+.then(res => res.json())
+.then(res => window.localStorage.setItem("Query",JSON.stringify(res.data.listDocuments)));
 }

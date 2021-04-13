@@ -12,7 +12,7 @@ const LinkList = (props) => {
         <div>
             {data &&
                 <React.Fragment>
-                    {data.feed.map((link) => (
+                    {data.items.map((link) => (
                         <Link key={link.id} link={link} ChangeView={props.ChangeView} />
                     ))}
                 </React.Fragment>
