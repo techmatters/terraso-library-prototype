@@ -57,9 +57,6 @@ class DocumentContainer extends React.Component {
         {this.state.DocButtonsShown &&
           <div>
             <LinkList ChangeView={this.handler}></LinkList>
-            <button className="btn-secondary btn-success" onClick={() => { UpdateQuery() }}>
-              Refresh
-          </button>
           </div>
         }
         {this.state.IframeShown && <iframe src={this.state.IframeValue} height="500" width="100%" title="Iframe Example"></iframe>}
