@@ -51,7 +51,7 @@ export function UseStickyState(defaultValue, key) {
 export function UpdateQuery(reload) {
   fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
   method: 'POST',
-  headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-s5726bhsfjfqvn37x33zwyju7q'},
+  headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-dsbwgx2cjfeazhyku4erfozidi'},
   body: JSON.stringify({
     "query": "query MyQuery{listDocuments{items{id name url priority}}}",
     "variables": {}
