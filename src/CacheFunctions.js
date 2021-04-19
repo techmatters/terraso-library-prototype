@@ -48,8 +48,8 @@ export function UseStickyState(defaultValue, key) {
 }
 
 /*updates the graphQL query stored in the Cache*/
-export function UpdateQuery(reload) {
-  fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
+export async function UpdateQuery(reload) {
+  const response = await fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
   method: 'POST',
   headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-dsbwgx2cjfeazhyku4erfozidi'},
   body: JSON.stringify({
@@ -57,6 +57,6 @@ export function UpdateQuery(reload) {
     "variables": {}
   }),
 })
-.then(res => res.json())
-.then(res => window.localStorage.setItem("Query",JSON.stringify(res.data.listDocuments)));
+console.log(response.json())
+return (response)
 }
