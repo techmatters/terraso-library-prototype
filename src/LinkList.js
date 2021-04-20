@@ -6,12 +6,13 @@ import { UpdateQuery } from './CacheFunctions';
 const LinkList = (props) => {
     //calls the useQuery Apollo hook to fetch the query information from the server.
     const [data, setData] = useState(JSON.parse(window.localStorage.getItem("Query")))
+    const [test, setTest] = useState(0)
 
     return (
         <div>
             <button className="btn-secondary btn-success" onClick={() => {
                 UpdateQuery()
-                setData(JSON.parse(window.localStorage.getItem("Query")))
+                setTest(1)
             }}>
                 Refresh
           </button>
@@ -22,6 +23,7 @@ const LinkList = (props) => {
                     ))}
                 </React.Fragment>
             }
+            <p>{test}</p>
         </div>
     );
 };
