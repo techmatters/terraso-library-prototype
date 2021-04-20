@@ -7,10 +7,13 @@ const LinkList = (props) => {
     //calls the useQuery Apollo hook to fetch the query information from the server.
     const [data, setData] = useState(JSON.parse(window.localStorage.getItem("Query")))
     const [test, setTest] = useState(0)
+    const value = UpdateQuery
     return (
         <div>
             <button className="btn-secondary btn-success" onClick={() => {
-                UpdateQuery()
+                UpdateQuery().then(data => console.log(data))
+                setTest(1)
+                
             }}>
                 Refresh
           </button>

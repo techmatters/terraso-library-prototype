@@ -57,6 +57,6 @@ export async function UpdateQuery(reload) {
     "variables": {}
   }),
 })
-console.log(response.json())
-return (response)
+
+return (response.json())
 }
