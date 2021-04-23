@@ -9,8 +9,10 @@ const LinkList = (props) => {
     const [test, setTest] = useState(0)
     const value = UpdateQuery
     return (
+        
         <div>
             <button className="btn-secondary btn-success" onClick={() => {
+             
                 UpdateQuery().then(data => console.log(data))
                 setTest(1)
                 
