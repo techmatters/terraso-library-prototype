@@ -1,3 +1,7 @@
+
+
+
+/* eslint-disable react/prop-types */
 module.exports = {
   env: {
     browser: true,
@@ -17,6 +21,8 @@ module.exports = {
   plugins: [
     'react'
   ],
-  rules: {
+  rules:
+   {
+    "react/prop-types": 0
   }
 }
