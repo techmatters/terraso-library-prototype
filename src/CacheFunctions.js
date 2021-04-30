@@ -59,15 +59,19 @@ export function UpdateQuery (reload) {
     .then(res => window.localStorage.setItem('Query', JSON.stringify(res.data.listDocuments)))
 }
 
-export function GetTimestamp () {
-  fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
+export async function GetTimestamp () {
+  const cachedResponse = window.localStorage.getItem('Timestamp')
+  console.log(cachedResponse)
+  const response = await fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-aeaufq6rxzdfjmt7f73jn33glu' },
     body: JSON.stringify({
       query: 'query MyQuery{listTimestamps{items{id time}}}',
       variables: {}
     })
-  })
-    .then(res => res.json())
-    .then(res => window.localStorage.setItem('Timestamp', JSON.stringify(res.data.listTimestamps.items[0].time)))
+  }).then(res => res.json())
+  const serverTimestamp = response.data.listTimestamps.items[0].time
+  if (serverTimestamp > cachedResponse) {
+    console.log('we need to perform an update')
+  }
 }
