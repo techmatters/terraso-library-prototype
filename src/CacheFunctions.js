@@ -46,22 +46,14 @@ export function UseStickyState (defaultValue, key) {
 }
 
 /* updates the graphQL query stored in the Cache */
-export function UpdateQuery (reload) {
-  fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-dsbwgx2cjfeazhyku4erfozidi' },
-    body: JSON.stringify({
-      query: 'query MyQuery{listDocuments{items{id name url priority}}}',
-      variables: {}
-    })
-  })
-    .then(res => res.json())
-    .then(res => window.localStorage.setItem('Query', JSON.stringify(res.data.listDocuments)))
+export function UpdateQuery (timestampValue) {
+  console.log('I am performing the update operation now')
+  window.localStorage.setItem('Timestamp', timestampValue)
 }
 
 export async function GetTimestamp () {
   const cachedResponse = window.localStorage.getItem('Timestamp')
-  console.log(cachedResponse)
+  console.log('calling GetTimestamp function')
   const response = await fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-aeaufq6rxzdfjmt7f73jn33glu' },
@@ -73,5 +65,6 @@ export async function GetTimestamp () {
   const serverTimestamp = response.data.listTimestamps.items[0].time
   if (serverTimestamp > cachedResponse) {
     console.log('we need to perform an update')
+    UpdateQuery(serverTimestamp)
   }
 }
