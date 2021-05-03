@@ -47,7 +47,7 @@ export function UseStickyState (defaultValue, key) {
 
 /* updates the graphQL query stored in the Cache */
 export function UpdateQuery (timestampValue) {
-  console.log('I am performing the update operation now')
+  console.log('UpdateQuery is running')
   window.localStorage.setItem('Timestamp', timestampValue)
 }
 
@@ -63,8 +63,13 @@ export async function GetTimestamp () {
     })
   }).then(res => res.json())
   const serverTimestamp = response.data.listTimestamps.items[0].time
+  console.log('server timestamp:', serverTimestamp, 'cached timestamp:', cachedResponse)
   if (serverTimestamp > cachedResponse) {
-    console.log('we need to perform an update')
-    UpdateQuery(serverTimestamp)
+    if (confirm('There are updates to the documents. Would you like to download now?')) {
+      console.log('performing UpdateQuery function')
+      UpdateQuery(serverTimestamp)
+    } else {
+      console.log('UpdateQuery function not performed')
+    }
   }
 }
