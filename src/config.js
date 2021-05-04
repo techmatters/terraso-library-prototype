@@ -1,12 +1,12 @@
 const prod = {
   url: {
-    DELAY: 1000 * 60 * 30
+    DELAY: 60 * 30
   }
 }
 
 const dev = {
   url: {
-    DELAY: 10000
+    DELAY: 5
   }
 }
 

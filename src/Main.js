@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {
   Route,
   NavLink,
@@ -13,7 +13,6 @@ import Modal from './Modal'
 
 function Main () {
   const { t } = useTranslation()
-  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
       <HashRouter>
@@ -32,8 +31,7 @@ function Main () {
           <Route path='/About' component={About} />
         </div>
       </HashRouter>
-      <button onClick = {() => setIsOpen(true)}> Open Modal</button>
-      <Modal open = {isOpen} onClose={() => setIsOpen(false)}></Modal>
+      <Modal></Modal>
     </>
   )
 }

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
-
+import { GetTimestamp } from './CacheFunctions'
+// import { config } from './config'
+// var delay = config.url.DELAY
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
@@ -20,27 +22,29 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 }
 
-export default function Modal ({ open, onClose }) {
+export default function Modal () {
   const [seconds, setSeconds] = useState(0)
+  const [display, setDisplay] = useState(false)
   useEffect(() => {
     const interval = setInterval(() => {
-      setSeconds(seconds => seconds + 1)
-    }, 1000)
+      console.log(GetTimestamp())
+    }, 5000)
     return () => clearInterval(interval)
   }, [])
-  if (seconds < 5) return null
-
+  const resetInterval = () => setSeconds(0)
+  if (!display) return null
   return (
     <>
     <div style = {OVERLAY_STYLES} />
     <div style={MODAL_STYLES}>
     <p>There is new data available, would you like to download now?</p>
-    {seconds} have elapsed since mounting
+    {seconds} seconds have elapsed
     <div></div>
-    <button size = 'lg'className='btn-success'>Accept</button>
-    <button size = 'lg'className='btn-danger'>Decline</button>
+    <button onClick={resetInterval} size = 'lg'className='btn-success'>Accept</button>
+    <button onClick={resetInterval} size = 'lg'className='btn-danger'>Decline</button>
+    <button onClick={() => GetTimestamp()} size = 'lg' classame='btn-danger'>fuck off eslint</button>
+    <button onClick={() => setDisplay(false)} size = 'lg' classame='btn-danger'>fuck off eslint</button>
     <div></div>
-    <button onClick={onClose}> Close Modal </button>
     </div>
     </>
   )

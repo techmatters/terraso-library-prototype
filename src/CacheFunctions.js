@@ -53,6 +53,7 @@ export function UpdateQuery (timestampValue) {
 
 export async function GetTimestamp () {
   const cachedResponse = window.localStorage.getItem('Timestamp')
+  const declinedResponse = window.localStorage.getItem('DeclinedResponse')
   console.log('calling GetTimestamp function')
   const response = await fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
     method: 'POST',
@@ -63,13 +64,15 @@ export async function GetTimestamp () {
     })
   }).then(res => res.json())
   const serverTimestamp = response.data.listTimestamps.items[0].time
-  console.log('server timestamp:', serverTimestamp, 'cached timestamp:', cachedResponse)
+  console.log('server timestamp:', serverTimestamp, 'cached timestamp:', cachedResponse, 'declined Response', declinedResponse)
   if (serverTimestamp > cachedResponse) {
-    if (confirm('There are updates to the documents. Would you like to download now?')) {
-      console.log('performing UpdateQuery function')
-      UpdateQuery(serverTimestamp)
-    } else {
-      console.log('UpdateQuery function not performed')
+    if (declinedResponse >= cachedResponse) {
+      console.log('declined response and server response are the same. returning false')
+      return false
     }
+    console.log('the server timestamp is newer. returning true')
+  } else {
+    console.log('the server timestamp is older. returning false')
+    return false
   }
 }
