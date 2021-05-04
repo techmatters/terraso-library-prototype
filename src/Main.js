@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   Route,
   NavLink,
@@ -8,20 +8,12 @@ import Home from './Home'
 import DocumentContainer from './DocumentContainer'
 import About from './About'
 import { useTranslation } from 'react-i18next'
-import { GetTimestamp } from './CacheFunctions'
-import { config } from './config'
-
-const delay = config.url.DELAY
+import Modal from './Modal'
 // initializes translation and a hash router for navigating between pages in the SPA
 
 function Main () {
   const { t } = useTranslation()
-  useEffect(() => {
-    const interval = setInterval(() => {
-      GetTimestamp()
-    }, delay)
-    return () => clearInterval(interval)
-  }, [])
+  const [isOpen, setIsOpen] = useState(false)
   return (
     <>
       <HashRouter>
@@ -40,6 +32,8 @@ function Main () {
           <Route path='/About' component={About} />
         </div>
       </HashRouter>
+      <button onClick = {() => setIsOpen(true)}> Open Modal</button>
+      <Modal open = {isOpen} onClose={() => setIsOpen(false)}></Modal>
     </>
   )
 }
