@@ -23,27 +23,22 @@ const OVERLAY_STYLES = {
 }
 
 export default function Modal () {
-  const [seconds, setSeconds] = useState(0)
   const [display, setDisplay] = useState(false)
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log(GetTimestamp())
+      GetTimestamp().then(result => setDisplay(result))
     }, 5000)
     return () => clearInterval(interval)
   }, [])
-  const resetInterval = () => setSeconds(0)
   if (!display) return null
   return (
     <>
     <div style = {OVERLAY_STYLES} />
     <div style={MODAL_STYLES}>
     <p>There is new data available, would you like to download now?</p>
-    {seconds} seconds have elapsed
     <div></div>
-    <button onClick={resetInterval} size = 'lg'className='btn-success'>Accept</button>
-    <button onClick={resetInterval} size = 'lg'className='btn-danger'>Decline</button>
-    <button onClick={() => GetTimestamp()} size = 'lg' classame='btn-danger'>fuck off eslint</button>
-    <button onClick={() => setDisplay(false)} size = 'lg' classame='btn-danger'>fuck off eslint</button>
+    <button onClick={() => { setDisplay(false); window.localStorage.setItem('wasDeclined', false) }} size = 'lg'className='btn-success'>Accept</button>
+    <button onClick={() => { setDisplay(false); window.localStorage.setItem('wasDeclined', true) }} size = 'lg'className='btn-danger'>Decline</button>
     <div></div>
     </div>
     </>

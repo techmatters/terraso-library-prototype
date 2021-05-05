@@ -53,24 +53,21 @@ export function UpdateQuery (timestampValue) {
 
 export async function GetTimestamp () {
   const cachedResponse = window.localStorage.getItem('Timestamp')
-  const declinedResponse = window.localStorage.getItem('DeclinedResponse')
   console.log('calling GetTimestamp function')
   const response = await fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-aeaufq6rxzdfjmt7f73jn33glu' },
+    headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-hy6rmpfetvactekg3d5agsdghm' },
     body: JSON.stringify({
       query: 'query MyQuery{listTimestamps{items{id time}}}',
       variables: {}
     })
   }).then(res => res.json())
   const serverTimestamp = response.data.listTimestamps.items[0].time
-  console.log('server timestamp:', serverTimestamp, 'cached timestamp:', cachedResponse, 'declined Response', declinedResponse)
+  console.log('server timestamp:', serverTimestamp, 'cached timestamp:', cachedResponse)
   if (serverTimestamp > cachedResponse) {
-    if (declinedResponse >= cachedResponse) {
-      console.log('declined response and server response are the same. returning false')
-      return false
-    }
     console.log('the server timestamp is newer. returning true')
+    window.localStorage.setItem('Timestamp', serverTimestamp)
+    return true
   } else {
     console.log('the server timestamp is older. returning false')
     return false
