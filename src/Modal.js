@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { GetTimestamp } from './CacheFunctions'
-// import { config } from './config'
+import { GetTimestamp, UpdateQuery } from './CacheFunctions'
+import { config } from './config'
+const DELAY = config.url.DELAY
+
 // var delay = config.url.DELAY
 const MODAL_STYLES = {
   position: 'fixed',
@@ -23,13 +25,18 @@ const OVERLAY_STYLES = {
 }
 
 export default function Modal () {
+  const [timeLeft, setTimeLeft] = useState(0)
   const [display, setDisplay] = useState(false)
   useEffect(() => {
-    const interval = setInterval(() => {
-      GetTimestamp().then(result => setDisplay(result))
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
+    if (!timeLeft) {
+      GetTimestamp().then(result => { setDisplay(result); if (!result) setTimeLeft(DELAY) })
+      return
+    }
+    const intervalId = setInterval(() => {
+      setTimeLeft(timeLeft - 1)
+    }, 1000)
+    return () => clearInterval(intervalId)
+  }, [timeLeft])
   if (!display) return null
   return (
     <>
@@ -37,10 +44,19 @@ export default function Modal () {
     <div style={MODAL_STYLES}>
     <p>There is new data available, would you like to download now?</p>
     <div></div>
-    <button onClick={() => { setDisplay(false); window.localStorage.setItem('wasDeclined', false) }} size = 'lg'className='btn-success'>Accept</button>
-    <button onClick={() => { setDisplay(false); window.localStorage.setItem('wasDeclined', true) }} size = 'lg'className='btn-danger'>Decline</button>
+    <button onClick={() => { setTimeLeft(DELAY); setDisplay(false); UpdateQuery(); window.localStorage.setItem('wasDeclined', false) }} size = 'lg'className='btn-success'>Accept</button>
+    <button onClick={() => { setTimeLeft(DELAY); setDisplay(false); window.localStorage.setItem('wasDeclined', true) }} size = 'lg'className='btn-danger'>Decline</button>
     <div></div>
     </div>
     </>
   )
 }
+
+/* useEffect(() => {
+  const interval = setInterval(() => {
+    GetTimestamp().then(result => setDisplay(result))
+  }, 5000)
+  return () => clearInterval(interval)
+}, [])
+if (!display) return null
+*/

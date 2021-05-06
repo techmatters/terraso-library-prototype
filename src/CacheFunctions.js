@@ -48,10 +48,12 @@ export function UseStickyState (defaultValue, key) {
 /* updates the graphQL query stored in the Cache */
 export function UpdateQuery (timestampValue) {
   console.log('UpdateQuery is running')
-  window.localStorage.setItem('Timestamp', timestampValue)
 }
 
-export async function GetTimestamp () {
+export async function GetTimestamp (onStart) {
+  if (onStart) {
+    console.log('we are running from startup')
+  }
   const cachedResponse = window.localStorage.getItem('Timestamp')
   console.log('calling GetTimestamp function')
   const response = await fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
@@ -69,7 +71,7 @@ export async function GetTimestamp () {
     window.localStorage.setItem('Timestamp', serverTimestamp)
     return true
   } else {
-    console.log('the server timestamp is older. returning false')
+    console.log('the server timestamp is the same/older. returning false')
     return false
   }
 }
