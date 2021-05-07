@@ -10,7 +10,6 @@ function Home () {
       <Dropdown />
       <h2>{t('Home.ContentViewerPrototype')}</h2>
       <p>{t('Home.Paragraph')}</p>
-      {REACT_APP_API_KEY}
     </div>
   )
 }
