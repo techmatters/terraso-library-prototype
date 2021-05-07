@@ -1,5 +1,5 @@
 import React from 'react'
-
+const {REACT_APP_API_KEY} = process.env
 /* takes a url and attempts to store it in the cache, returns true if the cache operation was
 successful, false otherwise. */
 export function CacheDocument (url) {
@@ -58,7 +58,7 @@ export async function GetTimestamp (onStart) {
   console.log('calling GetTimestamp function')
   const response = await fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/graphql', 'x-api-key': 'da2-hy6rmpfetvactekg3d5agsdghm' },
+    headers: { 'Content-Type': 'application/graphql', 'x-api-key': REACT_APP_API_KEY },
     body: JSON.stringify({
       query: 'query MyQuery{listTimestamps{items{id time}}}',
       variables: {}
