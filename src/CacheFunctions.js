@@ -48,6 +48,7 @@ export function UseStickyState (defaultValue, key) {
 /* updates the graphQL query stored in the Cache */
 export function UpdateQuery (timestampValue) {
   console.log('UpdateQuery is running')
+  window.localStorage.setItem('Timestamp', timestampValue)
 }
 
 export async function GetTimestamp (onStart) {
@@ -68,7 +69,6 @@ export async function GetTimestamp (onStart) {
   console.log('server timestamp:', serverTimestamp, 'cached timestamp:', cachedResponse)
   if (serverTimestamp > cachedResponse) {
     console.log('the server timestamp is newer. returning true')
-    window.localStorage.setItem('Timestamp', serverTimestamp)
     return true
   } else {
     console.log('the server timestamp is the same/older. returning false')
