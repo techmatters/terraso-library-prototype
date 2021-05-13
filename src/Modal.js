@@ -44,6 +44,12 @@ export default function Modal () {
   }, [timeLeft])
   if (!display) return null
   
+  const clickHandler = (value) => {
+    setTimeLeft(DELAY); 
+    setDisplay(false); 
+    window.localStorage.setItem('wasDeclined', true)
+  }
+  
   return (
     <>
     <div style = {OVERLAY_STYLES} />
@@ -51,8 +57,8 @@ export default function Modal () {
     <p>There is new data available, would you like to download now? It has been <text style={{fontWeight: "bold"}}> {time}</text> days since you last updated your data</p>
     
     <div></div>
-    <button onClick={() => { setTimeLeft(DELAY); setDisplay(false); window.localStorage.setItem('wasDeclined', true) }} size = 'lg'  style={{ marginRight: '2rem' }}>Not Right Now</button>
-    <button onClick={() => { setTimeLeft(DELAY); setDisplay(false); UpdateQuery(); window.localStorage.setItem('wasDeclined', false) }} size = 'lg'className='btn-primary'>Download Updated Data</button>
+    <button onClick={() => { clickHandler(true)}} size = 'lg'> Not Right Now</button>
+    <button onClick={() => { clickHandler(false)}} size = 'lg' className='btn-primary'> Download Updated Data</button>
 
     <div></div>
     </div>

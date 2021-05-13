@@ -57,6 +57,7 @@ export async function GetTimestamp (onStart) {
   }
   const cachedResponse = window.localStorage.getItem('Timestamp')
   console.log('calling GetTimestamp function')
+  console.log(REACT_APP_API_KEY)
   const response = await fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql', 'x-api-key': REACT_APP_API_KEY },
