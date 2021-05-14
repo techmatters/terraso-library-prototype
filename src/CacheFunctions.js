@@ -48,7 +48,6 @@ export function UseStickyState (defaultValue, key) {
 /* updates the graphQL query stored in the Cache */
 export function UpdateQuery (timestampValue) {
   console.log('UpdateQuery is running')
-  window.localStorage.setItem('Timestamp', timestampValue)
 }
 
 export async function GetTimestamp (onStart) {
@@ -57,7 +56,7 @@ export async function GetTimestamp (onStart) {
   }
   const cachedResponse = window.localStorage.getItem('Timestamp')
   console.log('calling GetTimestamp function')
-  console.log(REACT_APP_API_KEY)
+  
   const response = await fetch('https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql', {
     method: 'POST',
     headers: { 'Content-Type': 'application/graphql', 'x-api-key': REACT_APP_API_KEY },
@@ -67,6 +66,7 @@ export async function GetTimestamp (onStart) {
     })
   }).then(res => res.json())
   const serverTimestamp = response.data.listTimestamps.items[0].time
+  window.localStorage.setItem('PendingTimestamp', serverTimestamp)
   console.log('server timestamp:', serverTimestamp, 'cached timestamp:', cachedResponse)
   if (serverTimestamp > cachedResponse) {
     console.log('the server timestamp is newer. returning true')

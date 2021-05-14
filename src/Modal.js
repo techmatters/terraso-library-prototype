@@ -44,10 +44,19 @@ export default function Modal () {
   }, [timeLeft])
   if (!display) return null
   
+  const useKeyboardShortcut = (event ) => {
+    if (event.key === 'Enter'){
+      console.log('enter press here!')
+    }
+  }
+
   const clickHandler = (value) => {
     setTimeLeft(DELAY); 
     setDisplay(false); 
-    window.localStorage.setItem('wasDeclined', true)
+    window.localStorage.setItem('wasDeclined', value)
+    if (!value){
+      UpdateQuery()
+    }
   }
   
   return (
@@ -59,8 +68,6 @@ export default function Modal () {
     <div></div>
     <button onClick={() => { clickHandler(true)}} size = 'lg'> Not Right Now</button>
     <button onClick={() => { clickHandler(false)}} size = 'lg' className='btn-primary'> Download Updated Data</button>
-
-    <div></div>
     </div>
     </>
   )
