@@ -13,6 +13,12 @@
       "git add"
     ]
   },
+    "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@apollo/client": "^3.3.11",
     "@testing-library/jest-dom": "^5.11.5",
