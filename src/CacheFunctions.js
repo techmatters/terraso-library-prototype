@@ -48,6 +48,9 @@ export function UseStickyState (defaultValue, key) {
 /* updates the graphQL query stored in the Cache */
 export function UpdateQuery (timestampValue) {
   console.log('UpdateQuery is running')
+  const tempValue = window.localStorage.getItem('PendingTimestamp')
+  window.localStorage.setItem('Timestamp', tempValue)
+  window.localStorage.removeItem('PendingTimestamp')
 }
 
 export async function GetTimestamp (onStart) {
