@@ -67,10 +67,10 @@ export default function Modals () {
     return () => clearInterval(intervalId);
   }, [timeLeft]);
 
-  const clickHandler = (value) => {
+  const handleUserInput = (isDeclined) => {
     setDisplay(false);
-    window.localStorage.setItem('wasDeclined', value);
-    if (!value) {
+    window.localStorage.setItem('wasDeclined', isDeclined);
+    if (!isDeclined) {
       setTimeLeft(DELAY);
       UpdateQuery();
     }
@@ -99,7 +99,7 @@ export default function Modals () {
         </p>
         <button
           onClick={() => {
-            clickHandler(true);
+            handleUserInput(true);
           }}
           style={RIGHT_BUTTON}
           size='lg'
@@ -109,7 +109,7 @@ export default function Modals () {
         </button>
         <button
           onClick={() => {
-            clickHandler(false);
+            handleUserInput(false);
           }}
           style={LEFT_BUTTON}
           size='lg'
