@@ -1,18 +1,18 @@
-import React from 'react'
+import React from 'react';
 import {
   Route,
   NavLink,
   HashRouter
-} from 'react-router-dom'
-import Home from './Home'
-import DocumentContainer from './DocumentContainer'
-import About from './About'
-import { useTranslation } from 'react-i18next'
-import Modal from './Modal'
+} from 'react-router-dom';
+import Home from './Home';
+import DocumentContainer from './DocumentContainer';
+import About from './About';
+import { useTranslation } from 'react-i18next';
+import Modal from './Modal';
 // initializes translation and a hash router for navigating between pages in the SPA
 
 function Main () {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <>
       <HashRouter>
@@ -33,6 +33,6 @@ function Main () {
       </HashRouter>
       <Modal></Modal>
     </>
-  )
+  );
 }
-export default Main
+export default Main;
