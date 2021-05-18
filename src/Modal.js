@@ -37,7 +37,7 @@ const LEFT_BUTTON = {
   right: 10
 };
 
-export default function Modal() {
+export default function Modals () {
   const [timeLeft, setTimeLeft] = useState(999);
   const [display, setDisplay] = useState(true);
   // eslint-disable-next-line
