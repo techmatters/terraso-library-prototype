@@ -28,13 +28,13 @@ const OVERLAY_STYLES = {
 const RIGHT_BUTTON = {
   position: 'absolute',
   bottom: 10,
-  left: 10
+  left: 50
 };
 
 const LEFT_BUTTON = {
   position: 'absolute',
   bottom: 10,
-  right: 10
+  right: 50
 };
 
 export default function Modals () {
@@ -78,9 +78,9 @@ export default function Modals () {
 
   const handleAnswerChange = (event) => {
     if (event.key === 'Enter') {
-      alert('ENTER pressed');
+      handleUserInput(false);
     } else if (event.key === 'Escape') {
-      alert('ESC pressed');
+      handleUserInput(true);
     }
   };
 

@@ -2,7 +2,7 @@ import React from 'react';
 const { REACT_APP_API_KEY } = process.env;
 /* takes a url and attempts to store it in the cache, returns true if the cache operation was
 successful, false otherwise. */
-export function CacheDocument(url) {
+export function CacheDocument (url) {
   return caches.open('favorites').then(function (cache) {
     const updateCache = fetch(url, { redirect: 'error' }).then(function (
       response
@@ -28,7 +28,7 @@ export function CacheDocument(url) {
 }
 
 // deletes a document from the cache if it exists
-export function UncacheDocument(url) {
+export function UncacheDocument (url) {
   caches.open('favorites').then((cache) => {
     cache.delete(url);
   });
@@ -36,7 +36,7 @@ export function UncacheDocument(url) {
 
 /* React hook used to store and retrieve values from localStorage.
 used to maintain state variables across sessions */
-export function UseStickyState(defaultValue, key) {
+export function UseStickyState (defaultValue, key) {
   const [value, setValue] = React.useState(() => {
     const stickyValue = window.localStorage.getItem(key);
     return stickyValue !== null ? JSON.parse(stickyValue) : defaultValue;
@@ -48,16 +48,16 @@ export function UseStickyState(defaultValue, key) {
 }
 
 /* updates the graphQL query stored in the Cache */
-export function UpdateQuery(timestampValue) {
+export function UpdateQuery (timestampValue) {
   console.log('UpdateQuery is running');
   const tempValue = window.localStorage.getItem('PendingTimestamp');
   window.localStorage.setItem('Timestamp', tempValue);
   window.localStorage.removeItem('PendingTimestamp');
 }
 
-export async function GetTimestamp(onStart) {
+export async function GetTimestamp (onStart) {
   if (onStart) {
-    console.log('we are running from startup');
+    console.log('running from startup');
   }
   const cachedResponse = window.localStorage.getItem('Timestamp');
   console.log('calling GetTimestamp function');
