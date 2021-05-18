@@ -38,8 +38,8 @@ const LEFT_BUTTON = {
 };
 
 export default function Modals () {
-  const [timeLeft, setTimeLeft] = useState(999);
-  const [display, setDisplay] = useState(true);
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [display, setDisplay] = useState(false);
   // eslint-disable-next-line
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
@@ -90,7 +90,7 @@ export default function Modals () {
 
   return (
     <React.Fragment>
-      <div style={OVERLAY_STYLES} />
+      <div style={OVERLAY_STYLES}></div>
       <div style={MODAL_STYLES}>
         <p>
           There is new data available, would you like to download now? It has
