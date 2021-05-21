@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import Modal from './Modal';
 // initializes translation and a hash router for navigating between pages in the SPA
 
-function Main () {
+function Main() {
   const { t } = useTranslation();
   return (
     <>

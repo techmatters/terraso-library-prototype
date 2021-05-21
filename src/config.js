@@ -6,7 +6,7 @@ const prod = {
 
 const dev = {
   url: {
-    DELAY: 5
+    DELAY: 10
   }
 };
 

@@ -37,28 +37,28 @@ const LEFT_BUTTON = {
   right: 50
 };
 
-export default function Modals () {
-  const [timeLeft, setTimeLeft] = useState(0);
+export default function Modals() {
+  const [timeLeft, setTimeLeft] = useState(5);
   const [display, setDisplay] = useState(false);
   // eslint-disable-next-line
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
   );
   const inputRef = useRef();
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  });
-
   useEffect(() => {
     if (!timeLeft) {
       GetTimestamp().then((result) => {
         setDisplay(result);
-        if (!result) setTimeLeft(DELAY);
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+        if (!result) {
+          setTimeLeft(DELAY);
+        }
       });
-      if (display) inputRef.current.focus();
+      if (display) {
+        inputRef.current.focus();
+      }
       return;
     }
     const intervalId = setInterval(() => {
@@ -76,7 +76,8 @@ export default function Modals () {
     }
   };
 
-  const handleAnswerChange = (event) => {
+  const handleKeyPress = (event) => {
+    console.log(event);
     if (event.key === 'Enter') {
       handleUserInput(false);
     } else if (event.key === 'Escape') {
@@ -94,8 +95,7 @@ export default function Modals () {
       <div style={MODAL_STYLES}>
         <p>
           There is new data available, would you like to download now? It has
-          been <text style={{ fontWeight: 'bold' }}> {time}</text> days since
-          you last updated your data
+          been <b>{time}</b> days since you last updated your data
         </p>
         <button
           onClick={() => {
@@ -115,7 +115,7 @@ export default function Modals () {
           size='lg'
           className='btn-primary'
           ref={inputRef}
-          onKeyPress={handleAnswerChange}
+          onKeyPress={handleKeyPress}
         >
           {' '}
           Download Updated Data

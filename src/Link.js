@@ -32,7 +32,7 @@ function Link(props) {
       <img
         src={imgSource}
         alt='button images'
-        onClick={async function () {
+        onClick={async function() {
           if (cached === 0) {
             const returnValue = await CacheDocument(link.url);
             if (returnValue === true) {
