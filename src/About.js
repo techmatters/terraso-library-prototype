@@ -1,9 +1,9 @@
-import React from 'react'
-import { useTranslation } from 'react-i18next'
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 // initializes useTranslation hook
 function About () {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   return (
     <>
       <h2>{t('About.AdditionalDetails')}</h2>
@@ -22,7 +22,7 @@ function About () {
         </a>
       </p>
     </>
-  )
+  );
 }
 
-export default About
+export default About;

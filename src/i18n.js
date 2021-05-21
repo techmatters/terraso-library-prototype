@@ -1,7 +1,7 @@
-import i18n from 'i18next'
-import { initReactI18next } from 'react-i18next'
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-import Backend from 'i18next-xhr-backend'
+import Backend from 'i18next-xhr-backend';
 
 i18n
   // learn more: https://github.com/i18next/i18next-xhr-backend
@@ -23,6 +23,6 @@ i18n
     backend: {
       loadPath: './locales/{{lng}}/{{ns}}.json'
     }
-  })
+  });
 
-export default i18n
+export default i18n;

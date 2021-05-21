@@ -1,20 +1,20 @@
-import React from 'react'
+import React from 'react';
 import {
   UseStickyState,
   CacheDocument,
   UncacheDocument
-} from './CacheFunctions'
+} from './CacheFunctions';
 
 function Link (props) {
   // Props are passed in by parent component
-  const { link } = props
+  const { link } = props;
   /* defines state variables cache and setCached(allows for changing of "cached"). initial value of cached is
   taken from session storage or set to 0 if the information is not found in session storage */
-  const [cached, setCached] = UseStickyState(0, link.id)
+  const [cached, setCached] = UseStickyState(0, link.id);
   /* initializes the value of imgSource based on if the link is cached or not */
-  let imgSource = './heartgrey.png'
+  let imgSource = './heartgrey.png';
   if (cached === 1) {
-    imgSource = './heart.png'
+    imgSource = './heart.png';
   }
 
   return (
@@ -23,7 +23,7 @@ function Link (props) {
       <button
         className="btn-secondary btn-lg"
         onClick={() => {
-          props.ChangeView(link.url)
+          props.ChangeView(link.url);
         }}
       >
         {link.name}
@@ -34,20 +34,20 @@ function Link (props) {
         alt="button images"
         onClick={async function () {
           if (cached === 0) {
-            const returnValue = await CacheDocument(link.url)
+            const returnValue = await CacheDocument(link.url);
             if (returnValue === true) {
-              setCached(1)
+              setCached(1);
             } else {
-              setCached(0)
+              setCached(0);
             }
           } else {
-            setCached(0)
-            UncacheDocument(link.url)
+            setCached(0);
+            UncacheDocument(link.url);
           }
         }}
       />
     </>
-  )
+  );
 }
 
-export default Link
+export default Link;
