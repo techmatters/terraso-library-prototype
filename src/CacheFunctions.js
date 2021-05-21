@@ -55,12 +55,12 @@ export function UpdateQuery(timestampValue) {
   window.localStorage.removeItem('PendingTimestamp');
 }
 
-export async function GetTimestamp(onStart) {
+export async function CompareTimestamp(onStart) {
   if (onStart) {
     console.log('running from startup');
   }
   const cachedResponse = window.localStorage.getItem('Timestamp');
-  console.log('calling GetTimestamp function');
+  console.log('calling CompareTimestamp function');
 
   const response = await fetch(
     'https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql',
@@ -76,7 +76,13 @@ export async function GetTimestamp(onStart) {
       })
     }
   ).then((res) => res.json());
-  const serverTimestamp = response.data.listTimestamps.items[0].time;
+  let serverTimestamp = null;
+  try {
+    serverTimestamp = response.data.listTimestamps.items[0].time;
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
   window.localStorage.setItem('PendingTimestamp', serverTimestamp);
   console.log(
     'server timestamp:',

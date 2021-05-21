@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { GetTimestamp, UpdateQuery } from './CacheFunctions';
+import { CompareTimestamp, UpdateQuery } from './CacheFunctions';
 import { CompareDates } from './DateFunctions';
 import { config } from './config';
 const DELAY = config.url.DELAY;
@@ -47,7 +47,7 @@ export default function Modals() {
   const inputRef = useRef();
   useEffect(() => {
     if (!timeLeft) {
-      GetTimestamp().then((result) => {
+      CompareTimestamp().then((result) => {
         setDisplay(result);
         if (inputRef.current) {
           inputRef.current.focus();
