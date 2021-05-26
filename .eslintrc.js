@@ -20,6 +20,16 @@ module.exports = {
   ],
   rules: {
     'react/prop-types': 0,
+    'no-trailing-spaces': 'error',
+    'no-mixed-spaces-and-tabs': 'error',
+    'eol-last': 'error',
+    curly: ['error', 'multi-line', 'consistent'],
+    'object-curly-spacing': ['error', 'always'],
+    'space-in-parens': ['error', 'never'],
+    'comma-spacing': 'error',
+    'brace-style': 'error',
+
     semi: [2, 'always']
+
   }
 };

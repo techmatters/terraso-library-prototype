@@ -97,32 +97,14 @@ export default function Modals () {
         <p>
           There is new data available, would you like to download now? It has
           been
-          {' '}
           <b>{time}</b>
-          {' '}
           days since you last updated your data
         </p>
-        <button
-          onClick={() => {
-            handleUserInput(true);
-          }}
-          style={RIGHT_BUTTON}
-          size="lg"
-        >
-          {' '}
+        <button onClick={() => { handleUserInput(true); }} style={RIGHT_BUTTON} size="lg">
           Not Right Now
         </button>
-        <button
-          onClick={() => {
-            handleUserInput(false);
-          }}
-          style={LEFT_BUTTON}
-          size="lg"
-          className="btn-primary"
-          ref={inputRef}
-          onKeyPress={handleKeyPress}
-        >
-          {' '}
+        <button onClick={() => { handleUserInput(false); }} style={LEFT_BUTTON} size="lg" className="btn-primary"
+        ref={inputRef} onKeyDown={handleKeyPress}>
           Download Updated Data
         </button>
       </div>
