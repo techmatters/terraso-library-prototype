@@ -9,3 +9,4 @@ This content prototype uses npm for package management and can be installed and 
 npm i https://github.com/techmatters/terraso-library-prototype (currently not working? Ask Paul about security)
 npm run start
 ```
+You can also download the Source Code [here](https://github.com/techmatters/terraso-library-prototype/archive/refs/heads/master.zip)
