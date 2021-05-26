@@ -5,7 +5,7 @@ The Terraso Library Prototype is a Progressive Web App that allows the user to v
 
 ## Installation 
 This content prototype uses npm for package management and can be installed and ran with the following commands
-'''
+```
 npm i https://github.com/techmatters/terraso-library-prototype
 npm run start
-'''
+```
