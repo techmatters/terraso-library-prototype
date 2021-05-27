@@ -20,9 +20,8 @@ The following Schema defines a simple data type called "Document" which has an I
 
 ![AppSync Menu](https://i.ibb.co/bRqHRT6/Screen-Shot-2021-05-27-at-11-23-04-AM.png)
 
-AWS allows you to automatically create a Data Table using DynamoDB based on a GraphQL type and connect it to your GraphQL server. To do this click the "create resources" button
+AWS allows you to automatically create a Data Table using DynamoDB based on a GraphQL type and connect it to your GraphQL server. To do this click the "create resources" button 
 
-![AppSync Menu](https://i.ibb.co/N6FSPdN/Screen-Shot-2021-05-27-at-11-09-03-AM.png)
 
 In the next menu click "use existing type" and use the dropdown menu to choose the "document" type. Give the table a name and then scroll down and click the "Create Table" button. You now have a DynamoDB table that will store information about your Documents
-![AppSync Menu](https://i.ibb.co/N6FSPdN/Screen-Shot-2021-05-27-at-11-09-03-AM.png)
+![AppSync Menu](https://i.ibb.co/NxpJ6Gf/Screen-Shot-2021-05-27-at-11-25-06-AM.png)
