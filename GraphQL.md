@@ -44,6 +44,10 @@ Now that the GraphQL API has been created and connected to a data source, It can
 ## Setting up the Library Prototype with the GraphQL server
 
 Click on the "settings" section of your AppSync API, you should see fields for API_URL and API KEY
+
+![API information](https://i.ibb.co/Y0DwKND/Screen-Shot-2021-05-27-at-3-16-23-PM.png)
+//should I blur out the API key information or does it no matter since its expired?//
+
 These should be passed into the Library Prototype as environment variables REACT_APP_API_URL and REACT_APP_API_KEY respectively. This can be added in a .env file or passed through the shell (can we assume the user knows how to do this?)
 You can learn about passing environment variables [here](https://create-react-app.dev/docs/adding-custom-environment-variables/)
 (//general question for Paul: when making these kinds of documentations, what kind of "tech literate" assumptions can we make??//)
