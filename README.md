@@ -15,5 +15,5 @@ You can also download the Source Code [here](https://github.com/techmatters/terr
 ## Using the Terraso Library Prototype
 
 ## Setting up an AWS Resources
-[Setting up S3 bucket to host documents](https://github.com/techmatters/terraso-library-prototype/s3config.md)
+[Setting up S3 bucket to host documents](https://github.com/techmatters/terraso-library-prototype/blob/master/S3config.md)
 (creating APPSYNC)
