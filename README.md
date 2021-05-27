@@ -20,6 +20,7 @@ The dropdown menu uses i18next to change between languages. English, French and 
 ![dropdown](https://i.ibb.co/qd29CKn/Screen-Shot-2021-05-27-at-4-43-37-PM.png)
 
 The Documents page contains a list of Documents (fetched from a GraphQL API)
+![documents](https://i.ibb.co/M6z1rG9/Screen-Shot-2021-05-27-at-4-25-56-PM.png)
 
 
 You can click (or tap, if on mobile) on buttons to open a Document.
