@@ -36,6 +36,8 @@ Clicking on the name of a document will open a menu that contains an object URL,
 
 ![Document Menu](https://i.ibb.co/VLkDr9N/Screen-Shot-2021-05-27-at-10-22-57-AM.png)
 
+Congratulations, you now have have an S3 bucket capable of hosting documents that can be used by the Terraso Library Prototype. Click here to learn how to configure an AppSync GraphQL server or [here](https://github.com/techmatters/terraso-library-prototype) to go back to the repository
+
 
 
 
