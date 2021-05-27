@@ -27,3 +27,16 @@ AWS allows you to automatically create a Data Table using DynamoDB based on a Gr
 
 In the next menu click "use existing type" and use the dropdown menu to choose the "document" type. Give the table a name and then scroll down and click the "Create Table" button. You now have a DynamoDB table that will store information about your Documents
 ![AppSync Menu](https://i.ibb.co/NxpJ6Gf/Screen-Shot-2021-05-27-at-11-25-06-AM.png)
+
+##Adding a Document to the Table TODO: SET THIS UP TO POPULATE AUTOMATICALLY FROM S3 (IF TIME)
+
+You can add a new Document to the DynamoDB table by navigating to the "queries" section in the AppSync menu for your API and using a Mutation to add a new Document. AWS makes writing this mutation easier with the following steps
+
+1. In the Dropdown menu, change from "Query" to "Mutation" and hit the "+" button next to the dropdown menu
+2. In the section below the Dropdown Menu, open the "createDocument" tab and select "name" and "url" under input
+3. next to the check boxes you can enter the name and URL of the document. In my case I am using an image called "World Map" that is stored in an S3 Bucket
+4. Hit the orange "run" button to run the mutation. The rightmost box will confirm if the mutation was successful.
+
+![Instructions](https://i.ibb.co/GCpT76k/Screen-Shot-2021-05-27-at-12-00-15-PM.png)
+
+
