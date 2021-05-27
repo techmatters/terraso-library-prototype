@@ -1,5 +1,7 @@
 # Configuring a GraphQL server with AppSync
 
+## Creating an AppSync GraphQL Server
+
 In the AWS console navigate to AWS AppSync and click the "Create API" button
 
 ![AppSync Menu](https://i.ibb.co/DD1pyHM/Screen-Shot-2021-05-27-at-11-09-03-AM.png)
