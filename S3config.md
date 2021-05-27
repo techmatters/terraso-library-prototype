@@ -16,7 +16,7 @@ Making your bucket public will require you to acknoweldge the following statemen
 
 
 In order to perform functions like caching in the Terraso Library Prototype you will need to enable CORS (cross origin resource sharing) for all documents in the bucket. In order to do this navigate back to the S3 Console and click on your S3 bucket
-![Bucket Menu](https://i.ibb.co/KVgHThy/Screen-Shot-2021-05-27-at-10-01-32-AM.png)
+![Bucket Menu](https://i.ibb.co/j3YFnf4/Screen-Shot-2021-05-27-at-10-01-32-AM.png)
 Click on the Permissions tab and scroll to the bottom of the page to find the CORS configuration and click on the edit button
 ![Permissions](https://i.ibb.co/cLzmLV9/Screen-Shot-2021-05-27-at-10-02-42-AM.png)
 ![CORS](https://i.ibb.co/HT8PCbr/Screen-Shot-2021-05-27-at-10-04-11-AM.png)
