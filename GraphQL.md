@@ -28,7 +28,7 @@ AWS allows you to automatically create a Data Table using DynamoDB based on a Gr
 In the next menu click "use existing type" and use the dropdown menu to choose the "document" type. Give the table a name and then scroll down and click the "Create Table" button. You now have a DynamoDB table that will store information about your Documents
 ![AppSync Menu](https://i.ibb.co/NxpJ6Gf/Screen-Shot-2021-05-27-at-11-25-06-AM.png)
 
-##Adding a Document to the Table TODO: SET THIS UP TO POPULATE AUTOMATICALLY FROM S3 (IF TIME)
+## Adding a Document to the Table TODO: SET THIS UP TO POPULATE AUTOMATICALLY FROM S3 (IF TIME)
 
 You can add a new Document to the DynamoDB table by navigating to the "queries" section in the AppSync menu for your API and using a Mutation to add a new Document. AWS makes writing this mutation easier with the following steps
 
@@ -38,5 +38,11 @@ You can add a new Document to the DynamoDB table by navigating to the "queries" 
 4. Hit the orange "run" button to run the mutation. The rightmost box will confirm if the mutation was successful.
 
 ![Instructions](https://i.ibb.co/GCpT76k/Screen-Shot-2021-05-27-at-12-00-15-PM.png)
+
+Now that the GraphQL API has been created and connected to a data source, It can be called by the Library prototype once the API Key and Link have been passed to the Prototype
+
+## Setting up the Library Prototype with the GraphQL server
+
+Click on the "settings" section of your AppSync API, you should see fields for API_URL and API KEY
 
 
