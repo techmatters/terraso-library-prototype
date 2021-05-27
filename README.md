@@ -12,8 +12,8 @@ npm run start
 ```
 You can also download the Source Code [here](https://github.com/techmatters/terraso-library-prototype/archive/refs/heads/master.zip)
 
-##Using the Terraso Library Prototype
+## Using the Terraso Library Prototype
 
-##Setting up an AWS Resources
+## Setting up an AWS Resources
 (creating S3 bucket)
 (creating APPSYNC)
