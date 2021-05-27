@@ -2,7 +2,7 @@
 
 In the AWS console navigate to AWS AppSync and click the "Create API" button
 
-![AppSync Menu](https://i.ibb.co/N6FSPdN/Screen-Shot-2021-05-27-at-11-09-03-AM.png)
+![AppSync Menu](https://i.ibb.co/DD1pyHM/Screen-Shot-2021-05-27-at-11-09-03-AM.png)
 
 In the next screen select the "Build from scratch" option and click Start
 
