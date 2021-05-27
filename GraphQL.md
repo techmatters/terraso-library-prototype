@@ -14,11 +14,11 @@ Choose a name for your API
 
 You will be taken to the "Getting Started" menu. From here click "Edit Schema" to create a GraphQL Schema for your API
 
-![AppSync Menu](https://i.ibb.co/N6FSPdN/Screen-Shot-2021-05-27-at-11-09-03-AM.png)
+![AppSync Menu](https://i.ibb.co/j45SL9n/Screen-Shot-2021-05-27-at-11-15-57-AM.png)
 
 The following Schema defines a simple data type called "Document" which has an ID, Name, and a URL. You can learn more about GraphQL Schemas [here](https://graphql.org/learn/schema/). Click "Save Schema" once the Schema has been written.
 
-![AppSync Menu](https://i.ibb.co/N6FSPdN/Screen-Shot-2021-05-27-at-11-09-03-AM.png)
+![AppSync Menu](https://i.ibb.co/bRqHRT6/Screen-Shot-2021-05-27-at-11-23-04-AM.png)
 
 AWS allows you to automatically create a Data Table using DynamoDB based on a GraphQL type and connect it to your GraphQL server. To do this click the "create resources" button
 
