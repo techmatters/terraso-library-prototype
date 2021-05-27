@@ -16,4 +16,5 @@ You can also download the Source Code [here](https://github.com/techmatters/terr
 
 ## Setting up an AWS Resources
 [Setting up S3 bucket to host documents](https://github.com/techmatters/terraso-library-prototype/blob/master/S3config.md)
+
 [Setting up an AppSync GraphQL server]
