@@ -30,11 +30,11 @@ The following configuration will enable CORS between the S3 bucket and the domai
 
 You can now upload documents by going into your S3 bucket and clicking the upload button
 
-![Bucket Menu] (https://i.ibb.co/b3H1R2p/Screen-Shot-2021-05-27-at-10-36-22-AM.png)
+![Bucket Menu](https://i.ibb.co/b3H1R2p/Screen-Shot-2021-05-27-at-10-36-22-AM.png)
 
 Clicking on the name of a document will open a menu that contains an object URL, which is a link to that document. If you have configured your public access settings correctly you should be able to view this document by clicking directly on the link
 
-![Document Menu] (https://i.ibb.co/VLkDr9N/Screen-Shot-2021-05-27-at-10-22-57-AM.png)
+![Document Menu](https://i.ibb.co/VLkDr9N/Screen-Shot-2021-05-27-at-10-22-57-AM.png)
 
 
 
