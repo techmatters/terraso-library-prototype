@@ -26,6 +26,7 @@ The Documents page contains a list of Documents (fetched from a GraphQL API)
 You can click (or tap, if on mobile) on buttons to open a Document.
 
 Clicking (or tapping) the heart button next to each Document will "favorite" that document, adding it to the Cache and making that document available offline.
+![favorite](https://i.ibb.co/nbvZ45H/Screen-Shot-2021-05-27-at-4-26-25-PM.png)
 
 The About Page contains additional information and links to the source code and terraso website
 
