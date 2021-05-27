@@ -13,6 +13,20 @@ npm run start
 You can also download the Source Code [here](https://github.com/techmatters/terraso-library-prototype/archive/refs/heads/master.zip)
 
 ## Using the Terraso Library Prototype
+The Homepage contains an overview of the prototype as well as a dropdown menu for changing the language of the application
+![homepage](https://i.ibb.co/HpsWG0T/Screen-Shot-2021-05-27-at-4-25-35-PM.png)
+
+The dropdown menu uses i18next to change between languages. English, French and Spanish are available. 
+![dropdown](https://i.ibb.co/qd29CKn/Screen-Shot-2021-05-27-at-4-43-37-PM.png)
+
+The Documents page contains a list of Documents (fetched from a GraphQL API)
+
+
+You can click (or tap, if on mobile) on buttons to open a Document.
+
+Clicking (or tapping) the heart button next to each Document will "favorite" that document, adding it to the Cache and making that document available offline.
+
+The About Page contains additional information and links to the source code and terraso website
 
 ## Setting up an AWS Resources
 [Setting up S3 bucket to host documents](https://github.com/techmatters/terraso-library-prototype/blob/master/S3config.md)
