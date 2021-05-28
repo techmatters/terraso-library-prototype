@@ -1,4 +1,4 @@
-![Logo](images/logo.png)
+![Logo](images/terraso-logo.png)
 # Terraso Library
 
 The Terraso Library is a Progressive Web App that allows the user to view documents (images, PDFs, text files, etc.) and store them for offline reading. This was created as part of the [1000 Landscapes Project](https://techmatters.org/project/1000-landscapes/) primarily to research the functionality and limitations of Progressive Web Apps. This relies on Amazon Web Services: AppSync, DynamoDB, and Amazon S3.
