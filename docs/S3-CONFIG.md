@@ -1,4 +1,3 @@
-
 # Creating and Configuring an S3 Bucket
 
 ## Creating an S3 Bucket
@@ -25,7 +24,7 @@
 ### Bucket policy
 * Scroll to "Bucket policy"
 * Click Edit
-* Paste in this JSON, which enables pulic access to all documents in the bucket:
+* Paste in this JSON, which enables public access to all documents in the bucket:
 ```json
 {
     "Version": "2008-10-17",
