@@ -58,7 +58,7 @@ On the next screen:
 8. Paste in the Object URL to your document (from your S3 bucket)
 
 You should see something like this:
-![Instructions](https://i.ibb.co/GCpT76k/Screen-Shot-2021-05-27-at-12-00-15-PM.png)
+<br><img src="docs/images/queries-menu" width="800">
 
 9. Click the orange play (>) button
 
