@@ -30,7 +30,7 @@ git clone https://github.com/techmatters/terraso-library-prototype
 cd terraso-library-prototype
 npm install
 npm run start
-cp .env.sample .env
+cp .env .sample.env
 ```
 
 ### Setting up an AWS Resources
