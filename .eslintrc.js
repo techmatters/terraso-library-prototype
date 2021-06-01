@@ -7,6 +7,11 @@ module.exports = {
     'plugin:react/recommended',
     'standard'
   ],
+  settings: {
+    react: {
+       "version": "detect"
+    }
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true
