@@ -17,7 +17,7 @@ const Dropdown = () => {
   return (
     <div className="dropdown show">
       <a className="btn btn-secondary dropdown-toggle" href="/" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {t('Dropdown.Title')}
+        {t('ChangeLanguage.Title')}
       </a>
       <div className="dropdown-menu" href="!#" aria-labelledby="dropdownMenuLink">
         <a className="dropdown-item" href="!#" onClick={() => { updateLanguage('es'); }}>
