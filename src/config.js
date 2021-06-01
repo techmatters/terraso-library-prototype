@@ -2,12 +2,18 @@
 const prod = {
   url: {
     DELAY: 60 * 30
+  },
+  i18n: {
+    debug: false
   }
 };
 
 const dev = {
   url: {
     DELAY: 60 * 30
+  },
+  i18n: {
+    debug: false
   }
 };
 

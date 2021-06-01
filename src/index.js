@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import Main from './Main';
 import i18next from 'i18next';
+import { config } from './config';
 import './i18n.js';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +19,8 @@ if (!process.env.REACT_APP_API_URL) {
 }
 
 i18next.init({
-  interpolation: { escapeValue: false }
+  interpolation: { escapeValue: false },
+  debug: config.i18n.debug
 });
 
 ReactDOM.render(
