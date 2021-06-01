@@ -5,7 +5,6 @@ import './i18n.js';
 import i18next from 'i18next';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
 
 import { config } from './config.js';
 //  USED FOR VISUAL COMPONENTS: COULD BE CHANGED TO MAKE SMALLER
