@@ -4,24 +4,20 @@ import { UseStickyState, CacheDocument, UncacheDocument } from './CacheFunctions
 function Link (props) {
   // Props are passed from LinkList component
   const { link } = props;
-  /* defines state variables cache and setCached(allows for changing of "cached"). initial value of cached is
-  taken from session storage or set to 0 if the information is not found in session storage */
+
+  // defines state variables cache and setCached(allows for changing of "cached"). initial value of cached is
+  // taken from session storage or set to 0 if the information is not found in session storage
   const [cached, setCached] = UseStickyState(0, link.id);
+
   // initializes the value of imgSource based on if the link is cached or not
-  let imgSource = './heartgrey.png';
-  if (cached === 1) {
-    imgSource = './heart.png';
-  }
+  let imgSource = (cached === 1) ? './heart.png' : './heartgrey.png';
+  let imgAlt    = (cached === 1) ? 'favorite'   : 'not a favorite';
 
   // calls CacheDocument on the document and changes the value of cached if the operation was a success */
-  const handleClick = async () => {
+  const updateCache = async () => {
     if (cached === 0) {
       const returnValue = await CacheDocument(link.url);
-      if (returnValue === true) {
-        setCached(1);
-      } else {
-        setCached(0);
-      }
+      setCached(returnValue === true)
     } else {
       setCached(0);
       UncacheDocument(link.url);
@@ -34,8 +30,8 @@ function Link (props) {
       <button className="btn-secondary btn-lg" onClick={() => { props.ChangeView(link.url); }}>
         {link.name}
       </button>
-      <img src={imgSource} alt="button images" onClick={() => handleClick()} />
-      <div></div>
+      <img src={imgSource} alt={imgAlt} onClick={() => updateCache()} />
+      <div />
     </React.Fragment>
   );
 }
