@@ -1,7 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-// renders the About page
+/**
+ * Renders the about page
+ */
 function aboutPage () {
   const { t } = useTranslation();
   return (

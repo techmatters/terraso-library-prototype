@@ -66,7 +66,10 @@ export default function Modals () {
     }, 1000);
     return () => clearInterval(intervalId);
   }, [timeLeft]);
-  // handle user input on buttons
+
+  /**
+   * Handle button clicks
+   */
   const handleUserInput = (isDeclined) => {
     setDisplay(false);
     window.localStorage.setItem('wasDeclined', isDeclined);
@@ -75,8 +78,12 @@ export default function Modals () {
       UpdateQuery();
     }
   };
-  // handle user input through Enter or Escape keys
   const handleKeyPress = (event) => {
+
+  /**
+   * Handle enter or escape key presses
+   * use keyDown, not keyPress so this works on MacBooks with touch bars.
+   */
     if (event.key === 'Enter') {
       handleUserInput(false);
     } else if (event.key === 'Escape') {

@@ -3,8 +3,9 @@ import React from 'react';
 const { REACT_APP_API_KEY } = process.env;
 const { REACT_APP_API_URL } = process.env;
 
-/* takes a url and attempts to store it in the cache, returns true if the cache operation was
-successful, false otherwise. */
+// takes a url and attempts to store it in the cache
+// returns true if the cache operation was
+successful, false otherwise.
 export function CacheDocument (url) {
   return caches.open('favorites').then((cache) => {
     const updateCache = fetch(url, { redirect: 'error' }).then((
@@ -36,8 +37,8 @@ export function UncacheDocument (url) {
   });
 }
 
-/* React hook used to store and retrieve values from localStorage.
-used to maintain state variables across sessions */
+// React hook used to store and retrieve values from localStorage.
+// used to maintain state variables across sessions
 export function UseStickyState (defaultValue, key) {
   const [value, setValue] = React.useState(() => {
     const stickyValue = window.localStorage.getItem(key);
@@ -49,7 +50,7 @@ export function UseStickyState (defaultValue, key) {
   return [value, setValue];
 }
 
-/* updates the graphQL query stored in the Cache */
+// updates the graphQL query stored in the Cache
 export function UpdateQuery (timestampValue) {
   const tempValue = window.localStorage.getItem('PendingTimestamp');
   window.localStorage.setItem('Timestamp', tempValue);
@@ -84,8 +85,8 @@ export async function GetDocuments () {
   }
 }
 
-/* compares the timestamp from the server with the one in the cache, returning true
-if the server timestamp is newer */
+// compares the timestamp from the server with the one in the cache
+// returns true if the server timestamp is newer
 export async function CompareTimestamp (onStart) {
   const cachedResponse = window.localStorage.getItem('Timestamp');
 
