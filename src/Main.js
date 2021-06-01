@@ -5,9 +5,9 @@ import {
   HashRouter
 } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Home from './Homepage';
-import DocumentContainer from './DocumentContainer';
-import About from './About';
+import homePage from './Homepage';
+import DocumentContainer from './DocumentPage';
+import aboutPage from './AboutPage';
 import Modal from './Modal';
 
 // initializes translation and a hash router for navigating between pages in the SPA
@@ -25,9 +25,9 @@ function Main () {
           <li><NavLink to="/About">{t('Main.About')}</NavLink></li>
         </ul>
         <div className="content">
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={homePage} />
           <Route path="/Documents" component={DocumentContainer} />
-          <Route path="/About" component={About} />
+          <Route path="/About" component={aboutPage} />
         </div>
       </HashRouter>
       <Modal/>

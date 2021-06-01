@@ -58,7 +58,7 @@ export function UpdateQuery (timestampValue) {
   window.localStorage.removeItem('PendingTimestamp');
 }
 
-// fetches documents from the GraphQL server
+// fetches documents from the GraphQL server and writes to localStorage
 export async function GetDocuments () {
   const response = await fetch(
     REACT_APP_API_URL,

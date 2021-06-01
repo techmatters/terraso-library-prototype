@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 // renders the About page
-function About () {
+function aboutPage () {
   const { t } = useTranslation();
   return (
     <React.Fragment>
@@ -23,4 +23,4 @@ function About () {
   );
 }
 
-export default About;
+export default aboutPage;

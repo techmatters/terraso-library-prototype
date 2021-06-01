@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import Dropdown from './Dropdown';
 
-function Home () {
+function homePage () {
   // initializes useTranslation hook
   const { t } = useTranslation();
   return (
@@ -14,4 +14,4 @@ function Home () {
   );
 }
 
-export default Home;
+export default homePage;
