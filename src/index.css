@@ -40,3 +40,7 @@ ul.header li a {
 	color: #000;
 	text-decoration: none;
 }
+.header .dropdown {
+	display: inline;
+	float: right;
+}
