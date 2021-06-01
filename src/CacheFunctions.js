@@ -58,6 +58,10 @@ export function UpdateQuery (timestampValue) {
 
 // fetches documents from the GraphQL server and writes to localStorage
 export async function GetDocuments () {
+  if (!REACT_APP_API_URL) {
+    throw new Error('REACT_APP_API_URL is not defined');
+  }
+
   const response = await fetch(
     REACT_APP_API_URL,
     {
@@ -87,6 +91,10 @@ export async function CompareTimestamp (onStart) {
 
   if (!REACT_APP_API_URL) {
     throw new Error('REACT_APP_API_URL is not defined');
+  }
+
+  if (!REACT_APP_API_KEY) {
+    throw new Error('REACT_APP_API_KEY is not defined');
   }
 
   const response = await fetch(
