@@ -98,4 +98,4 @@ https://terraso-documents.s3.amazonaws.com/Directions.pdf
 
 Click on the object URL and confirm you can view the document.
 
-!<br><img src="images/document-info.png" width="800">
+<br><img src="images/document-info.png" width="800">
