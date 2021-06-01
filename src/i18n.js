@@ -14,7 +14,7 @@ i18n
 
     lng: window.localStorage.getItem('Language'),
     fallbackLng: 'en',
-    whitelist: ['en', 'sp', 'fr'],
+    whitelist: ['en', 'es', 'fr'],
 
     interpolation: {
       escapeValue: false // not needed for react as it escapes by default
