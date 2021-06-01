@@ -58,7 +58,7 @@ On the next screen:
 8. Paste in the Object URL to your document (from your S3 bucket)
 
 You should see something like this:
-<br><img src="/images/queries-menu.png" width="800">
+<br><img src="images/queries-menu.png" width="800">
 
 9. Click the orange play (>) button
 
