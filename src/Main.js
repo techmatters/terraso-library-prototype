@@ -22,14 +22,14 @@ function Main () {
         </ul>
         <ul className="header">
           <li><NavLink exact to="/">{t('Main.Home')}</NavLink></li>
-          <li><NavLink to="/Documents">{t('Main.Documents')}</NavLink></li>
-          <li><NavLink to="/About">{t('Main.About')}</NavLink></li>
+          <li><NavLink to="/documents">{t('Main.Documents')}</NavLink></li>
+          <li><NavLink to="/about">{t('Main.About')}</NavLink></li>
           <li><Dropdown /></li>
         </ul>
         <div className="content">
           <Route exact path="/" component={homePage} />
-          <Route path="/Documents" component={DocumentContainer} />
-          <Route path="/About" component={aboutPage} />
+          <Route path="/documents" component={DocumentContainer} />
+          <Route path="/about" component={aboutPage} />
         </div>
       </HashRouter>
       <Modal />
