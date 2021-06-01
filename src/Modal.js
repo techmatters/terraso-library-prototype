@@ -100,7 +100,7 @@ export default function Modals () {
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <p>
-          There is new data available, would you like to download now? It has
+          New data is available. Would you like to download now? It has
           been <b>{time}</b> days since you last updated your data
         </p>
         <button onClick={() => { handleUserInput(true); }} style={RIGHT_BUTTON} size="lg">
