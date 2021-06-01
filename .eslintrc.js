@@ -34,5 +34,6 @@ module.exports = {
     'comma-spacing': 'error',
     'brace-style': 'error',
     "semi": [2, 'always'],
+    "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }]
   }
 };
