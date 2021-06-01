@@ -95,9 +95,7 @@ addEventListener('fetch', event => {
       documentsCache.add(event.request.url)
     }
     return fetch(event.request, { redirect: "follow" }).catch((error) => {
-      if (event.request.url.includes("Documents")) {
-        console.log("attempting to reach from offline")
-      }
+      console.error(error);
     })
   }());
 });
