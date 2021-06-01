@@ -23,7 +23,7 @@ export function CacheDocument (url) {
         return true;
       })
       .catch((error) => {
-        console.log('article was not cached in favorites. Reason: ', error);
+        console.error('article was not cached in favorites. Reason: ', error);
         return false;
       });
   });
@@ -76,7 +76,7 @@ export async function GetDocuments () {
     const documentList = response.data.listDocuments;
     window.localStorage.setItem('Query', JSON.stringify(documentList));
   } catch (error) {
-    console.log('failed to fetch documents from GraphQL Server. Reason:', error);
+    console.error('failed to fetch documents from GraphQL Server. Reason:', error);
   }
 }
 
@@ -107,7 +107,7 @@ export async function CompareTimestamp (onStart) {
   try {
     serverTimestamp = response.data.listTimestamps.items[0].time;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return false;
   }
   window.localStorage.setItem('PendingTimestamp', serverTimestamp);
