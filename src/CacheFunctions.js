@@ -66,7 +66,7 @@ export async function GetDocuments () {
       method: 'POST',
       headers: {
         'Content-Type': 'application/graphql',
-        'x-api-key': REACT_APP_API_KEY
+        'x-api-key': '111111'
       },
       body: JSON.stringify({
         query: 'query MyQuery{listDocuments{items{id name url}}}',
@@ -74,7 +74,12 @@ export async function GetDocuments () {
       })
     }
   ).then((res) => res.json());
-  console.log(response);
+  try {
+    const documentList = response.data.listDocuments;
+    window.localStorage.setItem('Query', JSON.stringify(documentList));
+  } catch (error) {
+    console.log('failed to fetch documents from GraphQL Server. Reason:', error);
+  }
 }
 
 /* compares the timestamp from the server with the one in the cache, returning true
