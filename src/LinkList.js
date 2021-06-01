@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Link from './Link';
-import { GetDocuments } from './CacheFunctions';
 
 const LinkList = (props) => {
   // gets document data from localStorage.
@@ -9,16 +8,11 @@ const LinkList = (props) => {
   console.log(data);
 
   return (
-    <div>
-    <button onClick={() => GetDocuments()}>
-      ttttt
-    </button>
     <React.Fragment>
       {data && data.items.map((link) => (
         <Link key={link.id} link={link} ChangeView={props.ChangeView} />
       ))}
     </React.Fragment>
-    </div>
   );
 };
 

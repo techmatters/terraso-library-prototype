@@ -51,7 +51,7 @@ class DocumentContainer extends React.Component {
   button and the link component */
   render () {
     return (
-      <>
+      <React.Fragment>
         {this.state.DocButtonsShown &&
           (
           <div>
@@ -65,7 +65,7 @@ class DocumentContainer extends React.Component {
             Back
           </button>
           )}
-      </>
+      </React.Fragment>
     );
   }
 }
