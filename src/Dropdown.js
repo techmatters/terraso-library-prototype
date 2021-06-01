@@ -20,7 +20,7 @@ const Dropdown = () => {
         {t('Dropdown.Title')}
       </a>
       <div className="dropdown-menu" href="!#" aria-labelledby="dropdownMenuLink">
-        <a className="dropdown-item" href="!#" onClick={() => { updateLanguage('sp'); }}>
+        <a className="dropdown-item" href="!#" onClick={() => { updateLanguage('es'); }}>
           Espanol
         </a>
         <a className="dropdown-item" href="!#" onClick={() => { updateLanguage('en'); }}>
