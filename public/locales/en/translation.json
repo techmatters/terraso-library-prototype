@@ -8,13 +8,12 @@
     "Home": {
         "ContentViewerPrototype": "Content Viewer Prototype",
         "Paragraph": "This is a prototype for a PWA that allows for viewing cloud content and storing it for offline use. This prototype is primarily intended to be a learning/research project for learning about the capabilities and limitiations of PWAs especially regarding offline capabilities on a variety of devices"
-        
+
     },
     "About": {
         "AdditionalDetails": "Additional Details",
-        "Paragraph1": "This prototype was created for Tech Matters as part of the 1000 landscapes project, you can learn more",
-        "Paragraph2": "You can find the source code for this prototype",
-        "Here": "here"
+        "Paragraph1": "This prototype was created for Tech Matters as part of <a href='https://techmatters.org/project/1000-landscapes/'>1000 Landscapes for 1 Billion People</a>.",
+        "Paragraph2": "The source code is <a href='https://github.com/techmatters/terraso-library-prototype'>available on GitHub</a>."
     },
     "Documents":{
         "Documents": "Documents",
