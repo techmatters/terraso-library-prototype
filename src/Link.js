@@ -10,14 +10,14 @@ function Link (props) {
   const [cached, setCached] = UseStickyState(0, link.id);
 
   // initializes the value of imgSource based on if the link is cached or not
-  let imgSource = (cached === 1) ? './heart.png' : './heartgrey.png';
-  let imgAlt    = (cached === 1) ? 'favorite'   : 'not a favorite';
+  const imgSource = (cached === 1) ? './heart.png' : './heartgrey.png';
+  const imgAlt = (cached === 1) ? 'favorite' : 'not a favorite';
 
   // calls CacheDocument on the document and changes the value of cached if the operation was a success */
   const updateCache = async () => {
     if (cached === 0) {
       const returnValue = await CacheDocument(link.url);
-      setCached(returnValue === true)
+      setCached(returnValue === true);
     } else {
       setCached(0);
       UncacheDocument(link.url);
