@@ -34,7 +34,7 @@ function Link (props) {
       <button className="btn-secondary btn-lg" onClick={() => { props.ChangeView(link.url); }}>
         {link.name}
       </button>
-      <img src={imgSource} alt="button images" onClick={() => handleClick()}/>
+      <img src={imgSource} alt="button images" onClick={() => handleClick()} />
       <div></div>
     </React.Fragment>
   );

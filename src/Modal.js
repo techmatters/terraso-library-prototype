@@ -91,7 +91,7 @@ export default function Modals () {
 
   return (
     <React.Fragment>
-      <div style={OVERLAY_STYLES}/>
+      <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <p>
           There is new data available, would you like to download now? It has

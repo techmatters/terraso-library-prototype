@@ -30,7 +30,7 @@ function Main () {
           <Route path="/About" component={aboutPage} />
         </div>
       </HashRouter>
-      <Modal/>
+      <Modal />
     </React.Fragment>
   );
 }
