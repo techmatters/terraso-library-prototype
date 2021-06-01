@@ -5,7 +5,6 @@ import { config } from './config';
 
 const { DELAY } = config.url;
 
-// var delay = config.url.DELAY
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
