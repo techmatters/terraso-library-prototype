@@ -4,8 +4,8 @@ import Main from './Main';
 import i18next from 'i18next';
 import './i18n.js';
 import 'bootstrap';
-import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css'; // needs to be after bootstrap to override
 
 require('dotenv').config();
 
