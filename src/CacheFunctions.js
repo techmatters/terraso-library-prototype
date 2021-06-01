@@ -105,7 +105,9 @@ export async function CompareTimestamp (onStart) {
   ).then((res) => res.json());
   let serverTimestamp = null;
   try {
-    serverTimestamp = response.data.listTimestamps.items[0].time;
+    if (response && response.data && response.data.listTimestamps) {
+      serverTimestamp = response.data.listTimestamps.items[0].time;
+    }
   } catch (error) {
     console.error(error);
     return false;
