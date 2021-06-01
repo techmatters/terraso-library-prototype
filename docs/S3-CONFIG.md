@@ -9,7 +9,7 @@
 <br><img src="images/bucket-creation.png" width="800">
 
 * **Uncheck** the box "block all public access." Making your bucket public will require you to acknowledge the following statement:
-![Statement](https://i.ibb.co/hm0qzkc/Screen-Shot-2021-05-27-at-9-47-03-AM.png)
+<br><img src="images/enable-access.png" width="800">
 
 * Scroll to the bottom of the page and click the button marked "Create bucket"
 
