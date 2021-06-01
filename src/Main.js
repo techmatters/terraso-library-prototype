@@ -18,7 +18,6 @@ function Main () {
       <HashRouter>
         <ul className="header">
           <img src="./logo.png" alt="banner" />
-          <p>{t('Main.CloudContentViewer')}</p>
         </ul>
         <ul className="header">
           <li><NavLink exact to="/">{t('Main.Home')}</NavLink></li>

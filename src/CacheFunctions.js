@@ -1,6 +1,8 @@
 import React from 'react';
 
 const { REACT_APP_API_KEY } = process.env;
+const { REACT_APP_API_URL } = process.env;
+
 /* takes a url and attempts to store it in the cache, returns true if the cache operation was
 successful, false otherwise. */
 export function CacheDocument (url) {
@@ -56,6 +58,27 @@ export function UpdateQuery (timestampValue) {
   window.localStorage.removeItem('PendingTimestamp');
 }
 
+// fetches documents from the GraphQL server
+export async function GetDocuments () {
+  const response = await fetch(
+    REACT_APP_API_URL,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/graphql',
+        'x-api-key': REACT_APP_API_KEY
+      },
+      body: JSON.stringify({
+        query: 'query MyQuery{listDocuments{items{id name url}}}',
+        variables: {}
+      })
+    }
+  ).then((res) => res.json());
+  console.log(response);
+}
+
+/* compares the timestamp from the server with the one in the cache, returning true
+if the server timestamp is newer */
 export async function CompareTimestamp (onStart) {
   if (onStart) {
     console.log('running from startup');
@@ -64,7 +87,7 @@ export async function CompareTimestamp (onStart) {
   console.log('calling CompareTimestamp function');
 
   const response = await fetch(
-    'https://xiklt43x4fd7nmrzo5w4ox4xym.appsync-api.us-west-1.amazonaws.com/graphql',
+    REACT_APP_API_URL,
     {
       method: 'POST',
       headers: {
@@ -72,7 +95,7 @@ export async function CompareTimestamp (onStart) {
         'x-api-key': REACT_APP_API_KEY
       },
       body: JSON.stringify({
-        query: 'query MyQuery{listTimestamps{items{id time}}}',
+        query: 'query MyQuery{listDocuments{items{id name url}}}',
         variables: {}
       })
     }
