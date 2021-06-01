@@ -1,9 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-// constructs a dropdown menu
-const Dropdown = () => {
-  // initializes state, defines changeLanguage function
+const LanguageSelector = () => {
   const { t, i18n } = useTranslation(['translation', 'welcome']);
   const changeLanguage = (code) => {
     i18n.changeLanguage(code);
@@ -34,4 +32,4 @@ const Dropdown = () => {
   );
 };
 
-export default Dropdown;
+export default LanguageSelector;

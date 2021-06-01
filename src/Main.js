@@ -9,7 +9,7 @@ import homePage from './Homepage';
 import DocumentContainer from './DocumentPage';
 import aboutPage from './AboutPage';
 import Modal from './Modal';
-import Dropdown from './Dropdown';
+import LanguageSelector from './LanguageSelector';
 
 // initializes translation and a hash router for navigating between pages in the SPA
 function Main () {
@@ -24,7 +24,7 @@ function Main () {
           <li><NavLink exact to="/">{t('Main.Home')}</NavLink></li>
           <li><NavLink to="/documents">{t('Main.Documents')}</NavLink></li>
           <li><NavLink to="/about">{t('Main.About')}</NavLink></li>
-          <li><Dropdown /></li>
+          <li><LanguageSelector /></li>
         </ul>
         <div className="content">
           <Route exact path="/" component={homePage} />
