@@ -17,7 +17,7 @@
 ## Make the document accessible
 
 * Navigate back to the S3 Console and click on your S3 bucket
-![Bucket Menu](https://i.ibb.co/j3YFnf4/Screen-Shot-2021-05-27-at-10-01-32-AM.png)
+<br><img src="images/menu2.png" width="800">
 
 * Click the Permissions tab
 
@@ -87,7 +87,7 @@ Replace `localhost:3000` and `example.com` with your actual server URLs.
 * Select one or more files on your computer
 * Click Upload
 
-![Bucket Menu](https://i.ibb.co/b3H1R2p/Screen-Shot-2021-05-27-at-10-36-22-AM.png)
+<br><img src="images/documents-list.png" width="800">
 
 * Click on the name of a document you uploaded (example: Directions.pdf)
 
@@ -98,4 +98,4 @@ https://terraso-documents.s3.amazonaws.com/Directions.pdf
 
 Click on the object URL and confirm you can view the document.
 
-![Document Menu](https://i.ibb.co/VLkDr9N/Screen-Shot-2021-05-27-at-10-22-57-AM.png)
+!<br><img src="images/document-info.png" width="800">
