@@ -9,6 +9,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 require('dotenv').config();
 
+if (!process.env.REACT_APP_API_KEY) {
+  throw new Error('Specify a REACT_APP_API_KEY in your environemnt');
+}
+
+if (!process.env.REACT_APP_API_URL) {
+  throw new Error('Specify a REACT_APP_API_URL in your environemnt');
+}
 
 i18next.init({
   interpolation: { escapeValue: false }

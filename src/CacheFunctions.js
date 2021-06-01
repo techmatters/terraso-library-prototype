@@ -91,6 +91,10 @@ export async function CompareTimestamp (onStart) {
   const cachedResponse = window.localStorage.getItem('Timestamp');
   console.log('calling CompareTimestamp function');
 
+  if (!REACT_APP_API_URL) {
+    throw new Error('REACT_APP_API_URL is not defined');
+  }
+
   const response = await fetch(
     REACT_APP_API_URL,
     {
