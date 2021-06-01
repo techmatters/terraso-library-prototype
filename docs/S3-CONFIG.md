@@ -3,10 +3,10 @@
 ## Creating an S3 Bucket
 
 * In [the S3 console](https://s3.console.aws.amazon.com/s3/), click "Create bucket":
-![AWS S3](https://i.ibb.co/Gf6VGLv/Screen-Shot-2021-05-27-at-9-24-40-AM.png)
+<br><img src="images/s3-console.png" width="800">
 
 * Give your bucket a name (such as "terraso-documents")
-![Bucket Creation](https://i.ibb.co/w6CmxV9/Screen-Shot-2021-05-27-at-9-25-14-AM.png)
+<br><img src="images/bucket-creation.png" width="800">
 
 * **Uncheck** the box "block all public access." Making your bucket public will require you to acknowledge the following statement:
 ![Statement](https://i.ibb.co/hm0qzkc/Screen-Shot-2021-05-27-at-9-47-03-AM.png)
