@@ -11,7 +11,7 @@
 
     },
     "About": {
-        "AdditionalDetails": "Additional Details",
+        "AdditionalDetails": "About Terraso Library",
         "Paragraph1": "This prototype was created for Tech Matters as part of <a href='https://techmatters.org/project/1000-landscapes/'>1000 Landscapes for 1 Billion People</a>.",
         "Paragraph2": "The source code is <a href='https://github.com/techmatters/terraso-library-prototype'>available on GitHub</a>."
     },
