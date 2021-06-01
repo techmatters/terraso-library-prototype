@@ -5,7 +5,6 @@ const LinkList = (props) => {
   // gets document data from localStorage.
   // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState(JSON.parse(window.localStorage.getItem('Query')));
-  console.log(data);
 
   return (
     <React.Fragment>

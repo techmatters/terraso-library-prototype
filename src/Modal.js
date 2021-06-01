@@ -78,7 +78,6 @@ export default function Modals () {
   };
   // handle user input through Enter or Escape keys
   const handleKeyPress = (event) => {
-    console.log(event);
     if (event.key === 'Enter') {
       handleUserInput(false);
     } else if (event.key === 'Escape') {

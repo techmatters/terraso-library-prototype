@@ -17,7 +17,6 @@ export function CacheDocument (url) {
     });
     return updateCache
       .then(() => {
-        console.log('article was cached in favorites');
         caches.open('documents').then((cache) => {
           cache.delete(url);
         });
@@ -52,7 +51,6 @@ export function UseStickyState (defaultValue, key) {
 
 /* updates the graphQL query stored in the Cache */
 export function UpdateQuery (timestampValue) {
-  console.log('UpdateQuery is running');
   const tempValue = window.localStorage.getItem('PendingTimestamp');
   window.localStorage.setItem('Timestamp', tempValue);
   window.localStorage.removeItem('PendingTimestamp');
@@ -85,11 +83,7 @@ export async function GetDocuments () {
 /* compares the timestamp from the server with the one in the cache, returning true
 if the server timestamp is newer */
 export async function CompareTimestamp (onStart) {
-  if (onStart) {
-    console.log('running from startup');
-  }
   const cachedResponse = window.localStorage.getItem('Timestamp');
-  console.log('calling CompareTimestamp function');
 
   if (!REACT_APP_API_URL) {
     throw new Error('REACT_APP_API_URL is not defined');
@@ -117,16 +111,8 @@ export async function CompareTimestamp (onStart) {
     return false;
   }
   window.localStorage.setItem('PendingTimestamp', serverTimestamp);
-  console.log(
-    'server timestamp:',
-    serverTimestamp,
-    'cached timestamp:',
-    cachedResponse
-  );
   if (serverTimestamp > cachedResponse) {
-    console.log('the server timestamp is newer. returning true');
     return true;
   }
-  console.log('the server timestamp is the same/older. returning false');
   return false;
 }
