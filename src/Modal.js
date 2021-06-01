@@ -78,18 +78,19 @@ export default function Modals () {
       UpdateQuery();
     }
   };
-  const handleKeyPress = (event) => {
 
   /**
    * Handle enter or escape key presses
    * use keyDown, not keyPress so this works on MacBooks with touch bars.
    */
+  const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleUserInput(false);
     } else if (event.key === 'Escape') {
       handleUserInput(true);
     }
   };
+
   // render nothing if the modal does not need to be displayed
   if (!display) {
     return null;
@@ -107,7 +108,7 @@ export default function Modals () {
           Not Right Now
         </button>
         <button onClick={() => { handleUserInput(false); }} style={LEFT_BUTTON} size="lg" className="btn-primary"
-        ref={inputRef} onKeyDown={handleKeyPress}>
+        ref={inputRef} onKeyDown={handleKeyDown}>
           Download Updated Data
         </button>
       </div>
