@@ -67,7 +67,7 @@ export default function Modals () {
     }, 1000);
     return () => clearInterval(intervalId);
   }, [timeLeft]);
-
+  // handle user input on buttons
   const handleUserInput = (isDeclined) => {
     setDisplay(false);
     window.localStorage.setItem('wasDeclined', isDeclined);
@@ -76,7 +76,7 @@ export default function Modals () {
       UpdateQuery();
     }
   };
-
+  // handle user input through Enter or Escape keys
   const handleKeyPress = (event) => {
     console.log(event);
     if (event.key === 'Enter') {
@@ -85,20 +85,18 @@ export default function Modals () {
       handleUserInput(true);
     }
   };
-
+  // render nothing if the modal does not need to be displayed
   if (!display) {
     return null;
   }
 
   return (
-    <>
+    <React.Fragment>
       <div style={OVERLAY_STYLES}/>
       <div style={MODAL_STYLES}>
         <p>
           There is new data available, would you like to download now? It has
-          been
-          <b>{time}</b>
-          days since you last updated your data
+          been <b>{time}</b> days since you last updated your data
         </p>
         <button onClick={() => { handleUserInput(true); }} style={RIGHT_BUTTON} size="lg">
           Not Right Now
@@ -108,6 +106,6 @@ export default function Modals () {
           Download Updated Data
         </button>
       </div>
-    </>
+    </React.Fragment>
   );
 }
