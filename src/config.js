@@ -1,19 +1,20 @@
-// defined production and development variables for re-checking the documents page. These can be customized as needed.
 const prod = {
   url: {
-    DELAY: 60 * 30
+    DELAY: 1800 // 60 *30
   },
   i18n: {
-    debug: false
+    debug: false,
+    defaultLanguage: 'en'
   }
 };
 
 const dev = {
   url: {
-    DELAY: 60 * 30
+    DELAY: 1800 // 60 *30
   },
   i18n: {
-    debug: false
+    debug: false,
+    defaultLanguage: 'en'
   }
 };
 
