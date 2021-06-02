@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import homePage from './Homepage';
 import DocumentContainer from './DocumentPage';
 import aboutPage from './AboutPage';
-import Modal from './Modal';
+import Updater from './Updater';
 import LanguageSelector from './LanguageSelector';
 
 /**
@@ -34,7 +34,7 @@ function Main () {
           <Route path="/about" component={aboutPage} />
         </div>
       </HashRouter>
-      <Modal />
+      <Updater />
     </React.Fragment>
   );
 }
