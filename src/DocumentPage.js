@@ -44,9 +44,9 @@ class DocumentContainer extends React.Component {
    */
   handleSession (key, value) {
     const StorageValue = window.sessionStorage.getItem(key);
-    if (key === 'IframeValue' && StorageValue != null) {
+    if (key === 'IframeValue' && StorageValue !== null) {
       return StorageValue;
-    } if (StorageValue != null) {
+    } if (StorageValue !== null) {
       const ToReturn = (StorageValue === 'true');
       return ToReturn;
     }
