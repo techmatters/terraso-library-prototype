@@ -25,6 +25,7 @@ module.exports = {
   ],
   rules: {
     'react/prop-types': 0,
+    'eqeqeq': ["error", "always"],
     'no-trailing-spaces': 'error',
     'no-mixed-spaces-and-tabs': 'error',
     'eol-last': 'error',
