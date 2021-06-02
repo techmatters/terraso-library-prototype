@@ -1,12 +1,12 @@
 {
 	"Main": {
-		"CloudContentViewer": "Visor De Contenido en la Nube",
+		"CloudContentViewer": "biblioteca Terraso",
 		"Home": "Página Principal",
 		"Documents": "Documentos",
 		"About": "Acerca de"
 	},
 	"Home": {
-		"ContentViewerPrototype": "Prototipo de visor de contenido",
+		"ContentViewerPrototype": "biblioteca Terraso",
 		"Paragraph": "Teste es un prototipo de PWA que permite ver contenido en la nube y almacenarlo para su uso sin conexión. Este prototipo está destinado principalmente a ser un proyecto de aprendizaje / investigación para aprender sobre las capacidades y limitaciones de las PWA, especialmente con respecto a las capacidades fuera de línea en una variedad de dispositivos"
 	},
 	"About": {

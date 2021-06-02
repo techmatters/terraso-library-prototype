@@ -1,12 +1,12 @@
 {
 	"Main": {
-		"CloudContentViewer": "Visionneuse de contenu cloud",
+		"CloudContentViewer": "bibliothèque Terraso",
 		"Home": "Page d'accueil",
 		"Documents": "Des documents",
 		"About": "À propos"
 	},
 	"Home": {
-		"ContentViewerPrototype": "Prototype de visionneuse de contenu",
+		"ContentViewerPrototype": "bibliothèque Terraso",
 		"Paragraph": "Il s'agit d'un prototype de PWA qui permet de visualiser le contenu du cloud et de le stocker pour une utilisation hors ligne. Ce prototype est principalement destiné à être un projet d'apprentissage / de recherche pour en savoir plus sur les capacités et les limites des PWA, en particulier en ce qui concerne les capacités hors ligne sur une variété d'appareils."
 	},
 	"About": {

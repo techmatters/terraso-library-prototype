@@ -1,12 +1,12 @@
 {
 	"Main": {
-		"CloudContentViewer": "Cloud Content Viewer",
+		"CloudContentViewer": "Terraso Library",
 		"Home": "Home",
 		"Documents": "Documents",
 		"About": "About"
 	},
 	"Home": {
-		"ContentViewerPrototype": "Content Viewer Prototype",
+		"ContentViewerPrototype": "Terraso Library",
 		"Paragraph": "This is a prototype for a PWA that allows for viewing cloud content and storing it for offline use. This prototype is primarily intended to be a learning/research project for learning about the capabilities and limitiations of PWAs especially regarding offline capabilities on a variety of devices"
 	},
 	"About": {
