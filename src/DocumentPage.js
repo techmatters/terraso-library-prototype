@@ -1,8 +1,10 @@
 import React from 'react';
 import LinkList from './LinkList';
 
-/* DocumentContainer is the "main" component on the documents page, responsible for rendering
-the document buttons and Iframe */
+/**
+ * DocumentContainer is the "main" component on the documents page
+ * responsible for rendering the document buttons and iframe
+ */
 class DocumentContainer extends React.Component {
   constructor (props) {
     super(props);
@@ -18,9 +20,11 @@ class DocumentContainer extends React.Component {
     };
   }
 
-  /* Method for changing which components are shown and setting the src of the Iframe
-  to the document last clicked on. this method is passed to the child components.
-  this function also saves these values to sessionStorage */
+  /**
+   * Method for changing which components are shown and setting the src of the Iframe
+   * to the document last clicked on. this method is passed to the child components.
+   * this function also saves these values to sessionStorage
+   */
   handler (url) {
     window.sessionStorage.setItem('DocButtonsShown', !this.state.DocButtonsShown);
     window.sessionStorage.setItem('IframeShown', !this.state.IframeShown);
@@ -34,24 +38,28 @@ class DocumentContainer extends React.Component {
     });
   }
 
-  /* helper function that checks to see if sessionStorage has stored values for a key,value
-  pair and returns the value if it exists */
+  /**
+   * Checks to see if sessionStorage has stored values for a key,value
+   * pair and returns the value if it exists
+   */
   handleSession (key, value) {
     const StorageValue = window.sessionStorage.getItem(key);
-    if (key === 'IframeValue' && StorageValue != null) {
+    if (key === 'IframeValue' && StorageValue !== null) {
       return StorageValue;
-    } if (StorageValue != null) {
+    } if (StorageValue !== null) {
       const ToReturn = (StorageValue === 'true');
       return ToReturn;
     }
     return value;
   }
 
-  /* Renders the contents of the "documents" page. This consists of the Iframe, the "back"
-  button and the link component */
+  /**
+   * Renders the documents page.
+   * Consists of the iframe, the "back" button and the link component
+   */
   render () {
     return (
-      <>
+      <React.Fragment>
         {this.state.DocButtonsShown &&
           (
           <div>
@@ -65,7 +73,7 @@ class DocumentContainer extends React.Component {
             Back
           </button>
           )}
-      </>
+      </React.Fragment>
     );
   }
 }

@@ -1,13 +1,13 @@
 {
-    "short_name": "Terraso PWA",
-    "name": "PWA",
+    "short_name": "Terraso Library",
+    "name": "Terraso Library",
     "start_url": "/",
     "display": "standalone",
     "theme_color": "#ffffff",
     "theme-color": "#ffffff",
     "background_color": "#000000",
     "background-color": "#000000",
-    "description": "Cloud Content Prototype",
+    "description": "Terraso Library Prototype",
     "icons": [
       {
         "src": "/Logo192.png",

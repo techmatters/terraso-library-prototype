@@ -5,34 +5,37 @@ import {
   HashRouter
 } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Home from './Home';
-import DocumentContainer from './DocumentContainer';
-import About from './About';
-import Modal from './Modal';
-// initializes translation and a hash router for navigating between pages in the SPA
+import homePage from './Homepage';
+import DocumentContainer from './DocumentPage';
+import aboutPage from './AboutPage';
+import Updater from './Updater';
+import LanguageSelector from './LanguageSelector';
 
+/**
+ * Initializes translation and a hash router for navigating between pages
+ */
 function Main () {
   const { t } = useTranslation();
   return (
-    <>
+    <React.Fragment>
       <HashRouter>
         <ul className="header">
           <img src="./logo.png" alt="banner" />
-          <p>{t('Main.CloudContentViewer')}</p>
         </ul>
         <ul className="header">
           <li><NavLink exact to="/">{t('Main.Home')}</NavLink></li>
-          <li><NavLink to="/Documents">{t('Main.Documents')}</NavLink></li>
-          <li><NavLink to="/About">{t('Main.About')}</NavLink></li>
+          <li><NavLink to="/documents">{t('Main.Documents')}</NavLink></li>
+          <li><NavLink to="/about">{t('Main.About')}</NavLink></li>
+          <li><LanguageSelector /></li>
         </ul>
         <div className="content">
-          <Route exact path="/" component={Home} />
-          <Route path="/Documents" component={DocumentContainer} />
-          <Route path="/About" component={About} />
+          <Route exact path="/" component={homePage} />
+          <Route path="/documents" component={DocumentContainer} />
+          <Route path="/about" component={aboutPage} />
         </div>
       </HashRouter>
-      <Modal />
-    </>
+      <Updater />
+    </React.Fragment>
   );
 }
 export default Main;

@@ -1,12 +1,20 @@
 const prod = {
   url: {
-    DELAY: 60 * 30
+    DELAY: 1800 // 60 *30
+  },
+  i18n: {
+    debug: false,
+    defaultLanguage: 'en'
   }
 };
 
 const dev = {
   url: {
-    DELAY: 10
+    DELAY: 1800 // 60 *30
+  },
+  i18n: {
+    debug: false,
+    defaultLanguage: 'en'
   }
 };
 

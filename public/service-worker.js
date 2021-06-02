@@ -82,13 +82,11 @@ addEventListener('fetch', event => {
     const favoritesCache = await caches.open('favorites')
     const favoritesResponse = await favoritesCache.match(event.request.url)
     if (favoritesResponse !== undefined) {
-      console.log("found document in favorites cache")
       return favoritesResponse
     }
     const documentsCache = await caches.open("documents")
     const documentsResponse = await documentsCache.match(event.request.url)
     if (documentsResponse !== undefined) {
-      console.log("found document in documents cache")
       return documentsResponse
     }
 
@@ -96,11 +94,8 @@ addEventListener('fetch', event => {
     if (event.request.url.includes("/Documents")) {
       documentsCache.add(event.request.url)
     }
-    console.log("getting document from network ):")
     return fetch(event.request, { redirect: "follow" }).catch((error) => {
-      if (event.request.url.includes("Documents")) {
-        console.log("attempting to reach from offline")
-      }
+      console.error(error);
     })
   }());
 });

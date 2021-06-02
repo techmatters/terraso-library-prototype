@@ -5,7 +5,6 @@ import { config } from './config';
 
 const { DELAY } = config.url;
 
-// var delay = config.url.DELAY
 const MODAL_STYLES = {
   position: 'fixed',
   top: '50%',
@@ -38,7 +37,7 @@ const LEFT_BUTTON = {
   right: 50
 };
 
-export default function Modals () {
+export default function Updater () {
   const [timeLeft, setTimeLeft] = useState(5);
   const [display, setDisplay] = useState(false);
   // eslint-disable-next-line
@@ -68,6 +67,9 @@ export default function Modals () {
     return () => clearInterval(intervalId);
   }, [timeLeft]);
 
+  /**
+   * Handle button clicks
+   */
   const handleUserInput = (isDeclined) => {
     setDisplay(false);
     window.localStorage.setItem('wasDeclined', isDeclined);
@@ -77,8 +79,11 @@ export default function Modals () {
     }
   };
 
-  const handleKeyPress = (event) => {
-    console.log(event);
+  /**
+   * Handle enter or escape key presses
+   * use keyDown, not keyPress so this works on MacBooks with touch bars.
+   */
+  const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       handleUserInput(false);
     } else if (event.key === 'Escape') {
@@ -86,28 +91,27 @@ export default function Modals () {
     }
   };
 
+  // render nothing if the modal does not need to be displayed
   if (!display) {
     return null;
   }
 
   return (
-    <>
+    <React.Fragment>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
         <p>
-          There is new data available, would you like to download now? It has
-          been
-          <b>{time}</b>
-          days since you last updated your data
+          New data is available. Would you like to download now? It has
+          been <b>{time}</b> days since you last updated your data
         </p>
         <button onClick={() => { handleUserInput(true); }} style={RIGHT_BUTTON} size="lg">
           Not Right Now
         </button>
         <button onClick={() => { handleUserInput(false); }} style={LEFT_BUTTON} size="lg" className="btn-primary"
-        ref={inputRef} onKeyDown={handleKeyPress}>
+        ref={inputRef} onKeyDown={handleKeyDown}>
           Download Updated Data
         </button>
       </div>
-    </>
+    </React.Fragment>
   );
 }

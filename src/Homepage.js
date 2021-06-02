@@ -1,17 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Dropdown from './Dropdown';
 
-function Home () {
+function homePage () {
   // initializes useTranslation hook
   const { t } = useTranslation();
   return (
-    <>
-      <Dropdown />
+    <React.Fragment>
       <h2>{t('Home.ContentViewerPrototype')}</h2>
       <p>{t('Home.Paragraph')}</p>
-    </>
+    </React.Fragment>
   );
 }
 
-export default Home;
+export default homePage;
