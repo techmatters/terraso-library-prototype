@@ -11,7 +11,9 @@ import aboutPage from './AboutPage';
 import Modal from './Modal';
 import LanguageSelector from './LanguageSelector';
 
-// initializes translation and a hash router for navigating between pages in the SPA
+/**
+ * Initializes translation and a hash router for navigating between pages
+ */
 function Main () {
   const { t } = useTranslation();
   return (

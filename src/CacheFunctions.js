@@ -3,9 +3,11 @@ import React from 'react';
 const { REACT_APP_API_KEY } = process.env;
 const { REACT_APP_API_URL } = process.env;
 
-// takes a url and attempts to store it in the cache
-// returns true if the cache operation was
-successful, false otherwise.
+/**
+ * takes a url and attempts to store it in the cache
+ * returns true if the cache operation was
+ * successful, false otherwise.
+ */
 export function CacheDocument (url) {
   return caches.open('favorites').then((cache) => {
     const updateCache = fetch(url, { redirect: 'error' }).then((
@@ -30,15 +32,19 @@ export function CacheDocument (url) {
   });
 }
 
-// deletes a document from the cache if it exists
+/**
+ * Deletes a document from the cache if it exists
+ */
 export function UncacheDocument (url) {
   caches.open('favorites').then((cache) => {
     cache.delete(url);
   });
 }
 
-// React hook used to store and retrieve values from localStorage.
-// used to maintain state variables across sessions
+/**
+ * Store and retrieve values from localStorage.
+ * used to maintain state variables across sessions
+ */
 export function UseStickyState (defaultValue, key) {
   const [value, setValue] = React.useState(() => {
     const stickyValue = window.localStorage.getItem(key);
@@ -50,14 +56,18 @@ export function UseStickyState (defaultValue, key) {
   return [value, setValue];
 }
 
-// updates the graphQL query stored in the Cache
+/**
+ * Updates the graphQL query stored in the cache
+ */
 export function UpdateQuery (timestampValue) {
   const tempValue = window.localStorage.getItem('PendingTimestamp');
   window.localStorage.setItem('Timestamp', tempValue);
   window.localStorage.removeItem('PendingTimestamp');
 }
 
-// fetches documents from the GraphQL server and writes to localStorage
+/**
+ * Fetches documents from the GraphQL server and writes to localStorage
+ */
 export async function GetDocuments () {
   if (!REACT_APP_API_URL) {
     throw new Error('REACT_APP_API_URL is not defined');
@@ -85,8 +95,10 @@ export async function GetDocuments () {
   }
 }
 
-// compares the timestamp from the server with the one in the cache
-// returns true if the server timestamp is newer
+/**
+ * Compares the timestamp from the server with the one in the cache
+ * returns true if the server timestamp is newer
+ */
 export async function CompareTimestamp (onStart) {
   const cachedResponse = window.localStorage.getItem('Timestamp');
 

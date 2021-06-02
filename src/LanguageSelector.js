@@ -1,6 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+/**
+ * Change the current language. Persist the selection in localStorage.
+ */
 const LanguageSelector = () => {
   const { t, i18n } = useTranslation(['translation', 'welcome']);
   const changeLanguage = (code) => {
