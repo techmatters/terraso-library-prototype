@@ -6,12 +6,9 @@ import { useTranslation } from 'react-i18next';
  */
 const LanguageSelector = () => {
   const { t, i18n } = useTranslation(['translation', 'welcome']);
-  const changeLanguage = (code) => {
-    i18n.changeLanguage(code);
-  };
 
   const updateLanguage = (language) => {
-    changeLanguage(language);
+    i18n.changeLanguage(language);
     window.localStorage.setItem('Language', language);
   };
 
