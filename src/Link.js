@@ -1,6 +1,11 @@
 import React from 'react';
 import { UseStickyState, CacheDocument, UncacheDocument } from './CacheFunctions';
 
+/**
+ * Renders a link component which displays a button for each document and an accompanying favorite button.
+ * the Link component also inherits the ChangeView function from DocumentPage that allows the Link component to change
+ * the state of the Documents Page.
+ */
 function Link (props) {
   // Props are passed from LinkList component
   const { link } = props;
@@ -13,7 +18,10 @@ function Link (props) {
   const imgSource = (cached === 1) ? './heart.png' : './heartgrey.png';
   const imgAlt = (cached === 1) ? 'favorite' : 'not a favorite';
 
-  // calls CacheDocument on the document and changes the value of cached if the operation was a success */
+  /**
+   * attempts to cache the document URL associated with the link.
+   * If successful the value of "cached" will be updated
+   */
   const updateCache = async () => {
     if (cached === 0) {
       const returnValue = await CacheDocument(link.url);

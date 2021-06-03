@@ -36,7 +36,10 @@ const LEFT_BUTTON = {
   bottom: 10,
   right: 50
 };
-
+/**
+ * periodically runs the CompareTimestamp function
+ * If the applications TimeStamp is out of date the user will be given the option to update their data or wait
+ */
 export default function Updater () {
   const [timeLeft, setTimeLeft] = useState(5);
   const [display, setDisplay] = useState(false);
