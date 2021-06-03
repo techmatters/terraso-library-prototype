@@ -99,7 +99,7 @@ export async function GetDocuments () {
  * Compares the timestamp from the server with the one in the cache
  * returns true if the server timestamp is newer
  */
-export async function CompareTimestamp (onStart) {
+export async function CompareTimestamp () {
   const cachedResponse = window.localStorage.getItem('Timestamp');
 
   if (!REACT_APP_API_URL) {
