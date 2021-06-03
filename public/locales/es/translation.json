@@ -21,5 +21,10 @@
 	},
 	"ChangeLanguage": {
 		"Title": "Cambiar Idioma"
+	},
+	"Updater": {
+		"Message": "Hay nuevos datos disponibles. ¿Quieres descargar ahora? Han pasado<b> {{time}} </b> días desde la última vez que actualizaste tus datos",
+		"Accept": "Descargar Datos Actualizados",
+		"Decline": "No Ahora"
 	}
 }

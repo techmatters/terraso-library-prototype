@@ -20,5 +20,10 @@
 	},
 	"ChangeLanguage": {
 		"Title": "Change Language"
+	},
+	"Updater": {
+		"Message": "New data is available. Would you like to download now? It has been <b> {{time}} </b> days since you last updated your data",
+		"Accept": "Download Updated Data",
+		"Decline": "Not Right Now"
 	}
 }
