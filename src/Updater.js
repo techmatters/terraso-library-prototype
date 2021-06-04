@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CompareTimestamp, UpdateQuery } from './CacheFunctions';
 import { CompareDates } from './DateFunctions';
 import { config } from './config';
+import { useTranslation } from 'react-i18next';
 
 const { DELAY } = config.url;
 
@@ -38,8 +39,9 @@ const LEFT_BUTTON = {
 };
 
 export default function Updater () {
+  const { t } = useTranslation();
   const [timeLeft, setTimeLeft] = useState(5);
-  const [display, setDisplay] = useState(false);
+  const [display, setDisplay] = useState(true);
   // eslint-disable-next-line
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
@@ -100,16 +102,13 @@ export default function Updater () {
     <React.Fragment>
       <div style={OVERLAY_STYLES} />
       <div style={MODAL_STYLES}>
-        <p>
-          New data is available. Would you like to download now? It has
-          been <b>{time}</b> days since you last updated your data
-        </p>
+        <p dangerouslySetInnerHTML={{ __html: t('Updater.Message', { time: time }) }} />
         <button onClick={() => { handleUserInput(true); }} style={RIGHT_BUTTON} size="lg">
-          Not Right Now
+          {t('Updater.Accept')}
         </button>
         <button onClick={() => { handleUserInput(false); }} style={LEFT_BUTTON} size="lg" className="btn-primary"
         ref={inputRef} onKeyDown={handleKeyDown}>
-          Download Updated Data
+          {t('Updater.Decline')}
         </button>
       </div>
     </React.Fragment>
