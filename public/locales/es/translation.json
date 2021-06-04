@@ -11,9 +11,8 @@
 	},
 	"About": {
 		"AdditionalDetails": "Acerca de la biblioteca Terraso",
-		"Paragraph1": "Este prototipo fue creado para Tech Matters como parte del proyecto 1000 paisajes, puede obtener más información",
-		"Paragraph2": "Puede encontrar el código fuente de este prototipo",
-		"Here": "aquí"
+		"Paragraph1": "Este prototipo fue creado para Tech Matters como parte del <a href='https://techmatters.org/project/1000-landscapes/'>proyecto 1000 paisajes, puede obtener más información</a>",
+		"Paragraph2": "Puede encontrar el <a href='https://github.com/techmatters/terraso-library-prototype'>código fuente de este prototipo</a>"
 	},
 	"Documents": {
 		"Documents": "Documentos",
