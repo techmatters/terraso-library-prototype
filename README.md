@@ -19,6 +19,8 @@ You can click (or tap, if on mobile) on buttons to open a Document.
 Clicking (or tapping) the heart button next to each Document will favorite that document, adding it to the Cache and making that document available offline.
 <br><img src="docs/images/favorite.png" width="800">
 
+The Terraso Library is a Progressive Web App (PWA) and can be installed to the homescreen of a mobile device. [How to install a Progressive Web App on a phone.](https://mobilesyrup.com/2020/05/24/how-install-progressive-web-app-pwa-android-ios-pc-mac/#:~:text=Installing%20a%20PWA%20on%20iOS&text=Navigate%20to%20the%20website%20you,like%20a%20native%20iOS%20app)
+
 ## For developers
 
 ### Prerequisites
