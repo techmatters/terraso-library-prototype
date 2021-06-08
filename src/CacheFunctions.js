@@ -7,8 +7,8 @@ const { REACT_APP_API_URL } = process.env;
  * takes a url and attempts to store it in the cache
  * returns true if the cache operation was
  * successful, false otherwise.
- * @param {String} url
- * @returns {Boolean}
+ * @param {string} url
+ * @returns {boolean}
  */
 export function CacheDocument (url) {
   return caches.open('favorites').then((cache) => {
@@ -36,7 +36,7 @@ export function CacheDocument (url) {
 
 /**
  * Deletes a document from the cache if it exists
- * @param {String} url
+ * @param {string} url
  */
 export function UncacheDocument (url) {
   caches.open('favorites').then((cache) => {
@@ -46,8 +46,8 @@ export function UncacheDocument (url) {
 
 /**
  *
- * @param {Int} defaultValue
- * @param {String} key
+ * @param {int} defaultValue
+ * @param {string} key
  * @returns
  */
 export function UseStickyState (defaultValue, key) {
@@ -103,7 +103,7 @@ export async function GetDocuments () {
 /**
  * Compares the timestamp from the server with the one in the cache
  * returns true if the server timestamp is newer
- * @returns {Boolean}
+ * @returns {boolean}
  */
 export async function CompareTimestamp () {
   const cachedResponse = window.localStorage.getItem('Timestamp');
