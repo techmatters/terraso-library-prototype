@@ -15,9 +15,10 @@ function Link (props) {
 
   // calls CacheDocument on the document and changes the value of cached if the operation was a success */
   const updateCache = async () => {
+    console.log('update cache clicked');
     if (cached === 0) {
       const returnValue = await CacheDocument(link.url);
-      setCached(returnValue === true);
+      setCached(true | returnValue === true);
     } else {
       setCached(0);
       UncacheDocument(link.url);
