@@ -11,7 +11,9 @@
 * **Uncheck** the box "block all public access." Making your bucket public will require you to acknowledge the following statement:
 <br><img src="images/enable-access.png" width="800">
 
-* Scroll to the bottom of the page and click the button marked "Create bucket"
+* Check "I acknowledge that the current settings might result in this bucket and the objects within becoming public."
+
+* Scroll to the bottom of the page and click "Create bucket"
 
 
 ## Make the document accessible
