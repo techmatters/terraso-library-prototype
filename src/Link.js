@@ -5,7 +5,7 @@ import { UseStickyState, CacheDocument, UncacheDocument } from './CacheFunctions
  * Renders a link component which displays a button for each document and an accompanying favorite button.
  * the Link component also inherits the ChangeView function from DocumentPage that allows the Link component to change
  * the state of the Documents Page.
- * @param {Object} props
+ * @param {object} props
  */
 function Link (props) {
   // Props are passed from LinkList component
@@ -25,8 +25,8 @@ function Link (props) {
    */
   const updateCache = async () => {
     if (cached === 0) {
-      const cacheSuccess = await CacheDocument(link.url);
-      setCached(cacheSuccess === true);
+      const returnValue = await CacheDocument(link.url);
+      setCached(true | returnValue === true);
     } else {
       setCached(0);
       UncacheDocument(link.url);
