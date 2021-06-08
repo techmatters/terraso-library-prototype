@@ -79,7 +79,7 @@ export async function GetDocuments () {
       method: 'POST',
       headers: {
         'Content-Type': 'application/graphql',
-        'x-api-key': '111111'
+        'x-api-key': REACT_APP_API_KEY
       },
       body: JSON.stringify({
         query: 'query MyQuery{listDocuments{items{id name url}}}',
@@ -87,6 +87,7 @@ export async function GetDocuments () {
       })
     }
   ).then((res) => res.json());
+  console.log(response);
   try {
     const documentList = response.data.listDocuments;
     window.localStorage.setItem('Query', JSON.stringify(documentList));
