@@ -17,14 +17,14 @@ const LanguageSelector = () => {
       <a className="btn btn-secondary dropdown-toggle" href="/" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {t('ChangeLanguage.Title')}
       </a>
-      <div className="dropdown-menu" href="!#" aria-labelledby="dropdownMenuLink">
-        <a className="dropdown-item" href="!#" onClick={() => { updateLanguage('es'); }}>
+      <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a className="dropdown-item" onClick={() => { updateLanguage('es'); }}>
           Espanol
         </a>
-        <a className="dropdown-item" href="!#" onClick={() => { updateLanguage('en'); }}>
+        <a className="dropdown-item" onClick={() => { updateLanguage('en'); }}>
           English
         </a>
-        <a className="dropdown-item" href="!#" onClick={() => { updateLanguage('fr'); }}>
+        <a className="dropdown-item" onClick={() => { updateLanguage('fr'); }}>
           Français
         </a>
       </div>
