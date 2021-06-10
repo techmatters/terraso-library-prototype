@@ -9,3 +9,6 @@
 * Review the details of your application and then click "Save and Deploy"
 
 ## Adding Environment Variables
+* in App Settings, click environment variables
+* click the "Manage Variables" box
+* Add variables for REACT_APP_API_KEY and REACT_APP_API_KEY
