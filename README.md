@@ -39,3 +39,5 @@ cp .sample.env .env
 * [Set up an S3 bucket to host documents](docs/S3-CONFIG.md)
 
 * [Setting up an AppSync GraphQL server](docs/GRAPHQL.md)
+
+* [Hosting on Amplify](docs/AMPLIFY.md)
