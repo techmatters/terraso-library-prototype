@@ -58,15 +58,6 @@ export function UseStickyState (defaultValue, key) {
 }
 
 /**
- * Updates the graphQL query stored in the cache
- */
-export function UpdateQuery (timestampValue) {
-  const tempValue = window.localStorage.getItem('PendingTimestamp');
-  window.localStorage.setItem('Timestamp', tempValue);
-  window.localStorage.removeItem('PendingTimestamp');
-}
-
-/**
  * Fetches documents from the GraphQL server and writes to localStorage
  */
 export async function GetDocuments () {
@@ -103,6 +94,12 @@ export async function GetDocuments () {
  * returns true if the server timestamp is newer
  */
 export async function CompareTimestamp () {
-  CompareDates(window.localStorage.getItem('Timestamp'));
-  return true;
+  if (window.localStorage.getItem('Timestamp') === null) {
+    return false;
+  }
+  const timeDiff = CompareDates(window.localStorage.getItem('Timestamp'));
+  if (timeDiff > 2) {
+    return true;
+  }
+  return false;
 }

@@ -46,10 +46,12 @@ export default function Updater () {
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
   );
+  if (window.localStorage.getItem('Timestamp') === null) {
+    console.log('we need to run anyway');
+  }
   const inputRef = useRef();
   useEffect(() => {
     if (!timeLeft) {
-      console.log('lets run comparetimestamp');
       CompareTimestamp().then((result) => {
         setDisplay(result);
         if (inputRef.current) {
