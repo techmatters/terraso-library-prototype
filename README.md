@@ -43,4 +43,4 @@ cp .sample.env .env
 * [Hosting on Amplify](docs/AMPLIFY.md)
 
 ### Project Summary
-* [Summary of the Goal/Purpose of the Terraso Library](docs/project-summary.pdf) outlines some of the design choices and and difficulties encountered during the project as well as features that could be implemented in the future
+* [Summary of the Goal/Purpose of the Terraso Library](docs/project-summary.pdf) outlines some of the design choices and and difficulties encountered during the project as well as features that could be implemented in the future.
