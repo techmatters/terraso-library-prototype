@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import Link from './Link';
 import { GetDocuments } from './CacheFunctions';
 
+/**
+ * Takes Data representing documents and their URLS from localStorage and uses it to generate Link components
+ * @param {function} props
+ */
 const LinkList = (props) => {
   // gets document data from localStorage.
   GetDocuments();

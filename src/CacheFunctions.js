@@ -7,6 +7,8 @@ const { REACT_APP_API_URL } = process.env;
  * takes a url and attempts to store it in the cache
  * returns true if the cache operation was
  * successful, false otherwise.
+ * @param {string} url
+ * @returns {boolean}
  */
 export function CacheDocument (url) {
   return caches.open('favorites').then((cache) => {
@@ -34,6 +36,7 @@ export function CacheDocument (url) {
 
 /**
  * Deletes a document from the cache if it exists
+ * @param {string} url
  */
 export function UncacheDocument (url) {
   caches.open('favorites').then((cache) => {
@@ -42,8 +45,10 @@ export function UncacheDocument (url) {
 }
 
 /**
- * Store and retrieve values from localStorage.
- * used to maintain state variables across sessions
+ *
+ * @param {int} defaultValue
+ * @param {string} key
+ * @returns
  */
 export function UseStickyState (defaultValue, key) {
   const [value, setValue] = React.useState(() => {
@@ -59,7 +64,7 @@ export function UseStickyState (defaultValue, key) {
 /**
  * Updates the graphQL query stored in the cache
  */
-export function UpdateQuery (timestampValue) {
+export function UpdateQuery () {
   const tempValue = window.localStorage.getItem('PendingTimestamp');
   window.localStorage.setItem('Timestamp', tempValue);
   window.localStorage.removeItem('PendingTimestamp');
@@ -99,8 +104,9 @@ export async function GetDocuments () {
 /**
  * Compares the timestamp from the server with the one in the cache
  * returns true if the server timestamp is newer
+ * @returns {boolean}
  */
-export async function CompareTimestamp (onStart) {
+export async function CompareTimestamp () {
   const cachedResponse = window.localStorage.getItem('Timestamp');
 
   if (!REACT_APP_API_URL) {
