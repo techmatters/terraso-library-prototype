@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CompareTimestamp, GetDocuments } from './CacheFunctions';
 import { CompareDates } from './DateFunctions';
-import { config } from './config';
+// import { config } from './config';
 import { useTranslation } from 'react-i18next';
 
-const { DELAY } = config.url;
+// const { DELAY } = config.url;
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -40,14 +40,14 @@ const LEFT_BUTTON = {
 
 export default function Updater () {
   const { t } = useTranslation();
-  const [timeLeft, setTimeLeft] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(3);
   const [display, setDisplay] = useState(false);
   // eslint-disable-next-line
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
   );
   if (window.localStorage.getItem('Timestamp') === null) {
-    console.log('we need to run anyway');
+    GetDocuments();
   }
   const inputRef = useRef();
   useEffect(() => {
@@ -58,7 +58,7 @@ export default function Updater () {
           inputRef.current.focus();
         }
         if (!result) {
-          setTimeLeft(DELAY);
+          setTimeLeft(3);
         }
       });
       if (display) {
