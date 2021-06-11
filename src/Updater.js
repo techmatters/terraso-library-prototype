@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { CompareTimestamp, UpdateQuery } from './CacheFunctions';
+import { CompareTimestamp, GetDocuments } from './CacheFunctions';
 import { CompareDates } from './DateFunctions';
 import { config } from './config';
 import { useTranslation } from 'react-i18next';
@@ -40,8 +40,8 @@ const LEFT_BUTTON = {
 
 export default function Updater () {
   const { t } = useTranslation();
-  const [timeLeft, setTimeLeft] = useState(5);
-  const [display, setDisplay] = useState(true);
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [display, setDisplay] = useState(false);
   // eslint-disable-next-line
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
@@ -49,6 +49,7 @@ export default function Updater () {
   const inputRef = useRef();
   useEffect(() => {
     if (!timeLeft) {
+      console.log('lets run comparetimestamp');
       CompareTimestamp().then((result) => {
         setDisplay(result);
         if (inputRef.current) {
@@ -74,10 +75,8 @@ export default function Updater () {
    */
   const handleUserInput = (isDeclined) => {
     setDisplay(false);
-    window.localStorage.setItem('wasDeclined', isDeclined);
-    if (!isDeclined) {
-      setTimeLeft(DELAY);
-      UpdateQuery();
+    if (isDeclined) {
+      GetDocuments();
     }
   };
 
