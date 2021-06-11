@@ -20,7 +20,7 @@ function Main () {
     <React.Fragment>
       <HashRouter>
         <ul className="header">
-          <img src="./logo.png" alt="banner" />
+          <img src="./logo.png" width = '50px' height='50px'alt="banner" />
         </ul>
         <ul className="header">
           <li><NavLink exact to="/">{t('Main.Home')}</NavLink></li>
