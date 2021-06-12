@@ -8,6 +8,7 @@ const { REACT_APP_API_URL } = process.env;
  * takes a url and attempts to store it in the cache
  * returns true if the cache operation was
  * successful, false otherwise.
+ * @param {string} url
  * @returns {boolean}
  */
 export function CacheDocument (url) {
