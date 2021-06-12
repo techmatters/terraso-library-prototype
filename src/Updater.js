@@ -37,8 +37,9 @@ const LEFT_BUTTON = {
 
 export default function Updater () {
   const { t } = useTranslation();
-  const [display, setDisplay] = useState(false);
+  const [display, setDisplay] = useState(true);
   const [prompt, setPrompt] = useState(true);
+
   // eslint-disable-next-line
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
@@ -51,7 +52,9 @@ export default function Updater () {
         GetDocuments();
       } else {
         CompareTimestamp().then((result) => {
-          console.log(result);
+          if (result) {
+            setDisplay(true);
+          }
         });
       }
     }
@@ -90,11 +93,11 @@ export default function Updater () {
       <div style={MODAL_STYLES}>
         <p dangerouslySetInnerHTML={{ __html: t('Updater.Message', { time: time }) }} />
         <button onClick={() => { handleUserInput(true); }} style={RIGHT_BUTTON} size="lg">
-          {t('Updater.Accept')}
+          {t('Updater.Decline')}
         </button>
         <button onClick={() => { handleUserInput(false); }} style={LEFT_BUTTON} size="lg" className="btn-primary"
         ref={inputRef} onKeyDown={handleKeyDown}>
-          {t('Updater.Decline')}
+          {t('Updater.Accept')}
         </button>
       </div>
     </React.Fragment>

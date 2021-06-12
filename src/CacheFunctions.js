@@ -8,6 +8,7 @@ const { REACT_APP_API_URL } = process.env;
  * takes a url and attempts to store it in the cache
  * returns true if the cache operation was
  * successful, false otherwise.
+ * @returns {boolean}
  */
 export function CacheDocument (url) {
   return caches.open('favorites').then((cache) => {
@@ -89,8 +90,8 @@ export async function GetDocuments () {
 }
 
 /**
- * Compares the timestamp from the server with the one in the cache
- * returns true if the server timestamp is newer
+ * compares the cached timestamp to the current time, returns true if it is older than two days
+ * @returns {boolean}
  */
 export async function CompareTimestamp () {
   const timeDiff = CompareDates(window.localStorage.getItem('Timestamp'));
