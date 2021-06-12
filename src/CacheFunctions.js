@@ -37,6 +37,7 @@ export function CacheDocument (url) {
 
 /**
  * Deletes a document from the cache if it exists
+ * @param {string} url
  */
 export function UncacheDocument (url) {
   caches.open('favorites').then((cache) => {
@@ -45,8 +46,10 @@ export function UncacheDocument (url) {
 }
 
 /**
- * Store and retrieve values from localStorage.
- * used to maintain state variables across sessions
+ *
+ * @param {int} defaultValue
+ * @param {string} key
+ * @returns
  */
 export function UseStickyState (defaultValue, key) {
   const [value, setValue] = React.useState(() => {
@@ -57,6 +60,16 @@ export function UseStickyState (defaultValue, key) {
     window.localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
   return [value, setValue];
+}
+
+/**
+
+ * Updates the graphQL query stored in the cache
+ */
+export function UpdateQuery () {
+  const tempValue = window.localStorage.getItem('PendingTimestamp');
+  window.localStorage.setItem('Timestamp', tempValue);
+  window.localStorage.removeItem('PendingTimestamp');
 }
 
 /**

@@ -41,3 +41,6 @@ cp .sample.env .env
 * [Setting up an AppSync GraphQL server](docs/GRAPHQL.md)
 
 * [Hosting on Amplify](docs/AMPLIFY.md)
+
+### Project Summary
+* [Summary of the Goal/Purpose of the Terraso Library](docs/project-summary.pdf) outlines some of the design choices and and difficulties encountered during the project as well as features that could be implemented in the future.
