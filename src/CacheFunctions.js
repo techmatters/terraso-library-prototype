@@ -80,7 +80,6 @@ export async function GetDocuments () {
       })
     }
   ).then((res) => res.json());
-  console.log(response);
   try {
     const documentList = response.data.listDocuments;
     window.localStorage.setItem('Query', JSON.stringify(documentList));
@@ -94,9 +93,6 @@ export async function GetDocuments () {
  * returns true if the server timestamp is newer
  */
 export async function CompareTimestamp () {
-  if (window.localStorage.getItem('Timestamp') === null) {
-    return false;
-  }
   const timeDiff = CompareDates(window.localStorage.getItem('Timestamp'));
   if (timeDiff > 2) {
     return true;

@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CompareTimestamp, GetDocuments } from './CacheFunctions';
 import { CompareDates } from './DateFunctions';
-// import { config } from './config';
 import { useTranslation } from 'react-i18next';
-
-// const { DELAY } = config.url;
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -40,44 +37,32 @@ const LEFT_BUTTON = {
 
 export default function Updater () {
   const { t } = useTranslation();
-  const [timeLeft, setTimeLeft] = useState(3);
   const [display, setDisplay] = useState(false);
+  const [prompt, setPrompt] = useState(true);
   // eslint-disable-next-line
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
   );
-  if (window.localStorage.getItem('Timestamp') === null) {
-    GetDocuments();
-  }
   const inputRef = useRef();
   useEffect(() => {
-    if (!timeLeft) {
-      CompareTimestamp().then((result) => {
-        setDisplay(result);
-        if (inputRef.current) {
-          inputRef.current.focus();
-        }
-        if (!result) {
-          setTimeLeft(3);
-        }
-      });
-      if (display) {
-        inputRef.current.focus();
+    setPrompt(false);
+    if (prompt) {
+      if (window.localStorage.getItem('Timestamp') === null) {
+        GetDocuments();
+      } else {
+        CompareTimestamp().then((result) => {
+          console.log(result);
+        });
       }
-      return;
     }
-    const intervalId = setInterval(() => {
-      setTimeLeft(timeLeft - 1);
-    }, 1000);
-    return () => clearInterval(intervalId);
-  }, [timeLeft]);
+  });
 
   /**
    * Handle button clicks
    */
   const handleUserInput = (isDeclined) => {
     setDisplay(false);
-    if (isDeclined) {
+    if (!isDeclined) {
       GetDocuments();
     }
   };
