@@ -1,4 +1,5 @@
 import React from 'react';
+import { CompareDates } from './DateFunctions';
 
 const { REACT_APP_API_KEY } = process.env;
 const { REACT_APP_API_URL } = process.env;
@@ -62,6 +63,7 @@ export function UseStickyState (defaultValue, key) {
 }
 
 /**
+
  * Updates the graphQL query stored in the cache
  */
 export function UpdateQuery () {
@@ -74,6 +76,7 @@ export function UpdateQuery () {
  * Fetches documents from the GraphQL server and writes to localStorage
  */
 export async function GetDocuments () {
+  window.localStorage.setItem('Timestamp', Date.now());
   if (!REACT_APP_API_URL) {
     throw new Error('REACT_APP_API_URL is not defined');
   }
@@ -92,7 +95,6 @@ export async function GetDocuments () {
       })
     }
   ).then((res) => res.json());
-  console.log(response);
   try {
     const documentList = response.data.listDocuments;
     window.localStorage.setItem('Query', JSON.stringify(documentList));
@@ -102,46 +104,12 @@ export async function GetDocuments () {
 }
 
 /**
- * Compares the timestamp from the server with the one in the cache
- * returns true if the server timestamp is newer
+ * compares the cached timestamp to the current time, returns true if it is older than two days
  * @returns {boolean}
  */
 export async function CompareTimestamp () {
-  const cachedResponse = window.localStorage.getItem('Timestamp');
-
-  if (!REACT_APP_API_URL) {
-    throw new Error('REACT_APP_API_URL is not defined');
-  }
-
-  if (!REACT_APP_API_KEY) {
-    throw new Error('REACT_APP_API_KEY is not defined');
-  }
-
-  const response = await fetch(
-    REACT_APP_API_URL,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/graphql',
-        'x-api-key': REACT_APP_API_KEY
-      },
-      body: JSON.stringify({
-        query: 'query MyQuery{listDocuments{items{id name url}}}',
-        variables: {}
-      })
-    }
-  ).then((res) => res.json());
-  let serverTimestamp = null;
-  try {
-    if (response && response.data && response.data.listTimestamps) {
-      serverTimestamp = response.data.listTimestamps.items[0].time;
-    }
-  } catch (error) {
-    console.error(error);
-    return false;
-  }
-  window.localStorage.setItem('PendingTimestamp', serverTimestamp);
-  if (serverTimestamp > cachedResponse) {
+  const timeDiff = CompareDates(window.localStorage.getItem('Timestamp'));
+  if (timeDiff > 2) {
     return true;
   }
   return false;

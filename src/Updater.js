@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { CompareTimestamp, UpdateQuery } from './CacheFunctions';
+import React, { useState, useEffect } from 'react';
+import { CompareTimestamp, GetDocuments } from './CacheFunctions';
 import { CompareDates } from './DateFunctions';
-import { config } from './config';
 import { useTranslation } from 'react-i18next';
-
-const { DELAY } = config.url;
 
 const MODAL_STYLES = {
   position: 'fixed',
@@ -38,50 +35,43 @@ const LEFT_BUTTON = {
   right: 50
 };
 
+
 /**
  * periodically runs the CompareTimestamp function
  * If the applications TimeStamp is out of date the user will be given the option to update their data or wait
  */
 export default function Updater () {
   const { t } = useTranslation();
-  const [timeLeft, setTimeLeft] = useState(5);
   const [display, setDisplay] = useState(true);
+  const [prompt, setPrompt] = useState(true);
+
   // eslint-disable-next-line
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
   );
-  const inputRef = useRef();
+
   useEffect(() => {
-    if (!timeLeft) {
-      CompareTimestamp().then((result) => {
-        setDisplay(result);
-        if (inputRef.current) {
-          inputRef.current.focus();
-        }
-        if (!result) {
-          setTimeLeft(DELAY);
-        }
-      });
-      if (display) {
-        inputRef.current.focus();
+    setPrompt(false);
+    if (prompt) {
+      if (window.localStorage.getItem('Timestamp') === null) {
+        GetDocuments();
+      } else {
+        CompareTimestamp().then((result) => {
+          if (result) {
+            setDisplay(true);
+          }
+        });
       }
-      return;
     }
-    const intervalId = setInterval(() => {
-      setTimeLeft(timeLeft - 1);
-    }, 1000);
-    return () => clearInterval(intervalId);
-  }, [timeLeft]);
+  });
 
   /**
    * Handle button clicks
    */
   const handleUserInput = (isDeclined) => {
     setDisplay(false);
-    window.localStorage.setItem('wasDeclined', isDeclined);
     if (!isDeclined) {
-      setTimeLeft(DELAY);
-      UpdateQuery();
+      GetDocuments();
     }
   };
 
@@ -108,11 +98,11 @@ export default function Updater () {
       <div style={MODAL_STYLES}>
         <p dangerouslySetInnerHTML={{ __html: t('Updater.Message', { time: time }) }} />
         <button onClick={() => { handleUserInput(true); }} style={RIGHT_BUTTON} size="lg">
-          {t('Updater.Accept')}
+          {t('Updater.Decline')}
         </button>
         <button onClick={() => { handleUserInput(false); }} style={LEFT_BUTTON} size="lg" className="btn-primary"
-        ref={inputRef} onKeyDown={handleKeyDown}>
-          {t('Updater.Decline')}
+         onKeyDown={handleKeyDown}>
+          {t('Updater.Accept')}
         </button>
       </div>
     </React.Fragment>

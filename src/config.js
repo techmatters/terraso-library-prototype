@@ -10,7 +10,7 @@ const prod = {
 
 const dev = {
   url: {
-    DELAY: 1800 // 60 *30
+    DELAY: 10 // 60 *30
   },
   i18n: {
     debug: false,

@@ -22,7 +22,7 @@
 		"Title": "Changer de langue"
 	},
 	"Updater": {
-		"Message": "De nouvelles données sont disponibles. Souhaitez-vous télécharger maintenant ? Cela fait <b>{{time}}</b> jours que vous avez mis à jour vos données pour la dernière fois",
+		"Message": "Souhaitez-vous vérifier les données mises à jour ? Cela fait <b>{{time}}</b> jours depuis la dernière mise à jour.",
 		"Accept": "Télécharger Les Données",
 		"Decline": "Pas Tout De Suite"
 	}
