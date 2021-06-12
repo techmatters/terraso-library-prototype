@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CompareTimestamp, GetDocuments } from './CacheFunctions';
 import { CompareDates } from './DateFunctions';
 import { useTranslation } from 'react-i18next';
@@ -35,7 +35,7 @@ const LEFT_BUTTON = {
   right: 50
 };
 
-export default function Updater () {
+export default function Updater (props) {
   const { t } = useTranslation();
   const [display, setDisplay] = useState(true);
   const [prompt, setPrompt] = useState(true);
@@ -44,7 +44,7 @@ export default function Updater () {
   const [time, setTime] = useState(
     CompareDates(window.localStorage.getItem('Timestamp'))
   );
-  const inputRef = useRef();
+
   useEffect(() => {
     setPrompt(false);
     if (prompt) {
@@ -96,7 +96,7 @@ export default function Updater () {
           {t('Updater.Decline')}
         </button>
         <button onClick={() => { handleUserInput(false); }} style={LEFT_BUTTON} size="lg" className="btn-primary"
-        ref={inputRef} onKeyDown={handleKeyDown}>
+         onKeyDown={handleKeyDown}>
           {t('Updater.Accept')}
         </button>
       </div>
